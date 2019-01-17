@@ -95,5 +95,8 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-        type: git 
-        repo: git@github.com:Leopold-Sun/Leopold-Sun.github.io.git,master
+  type: git
+  repository:
+      github: git@github.com:Leopold-Sun/Leopold-Sun.github.io.git
+      coding: git@git.coding.net:Leopold-Seagal/Leopold-Seagal.git
+  branch: master
