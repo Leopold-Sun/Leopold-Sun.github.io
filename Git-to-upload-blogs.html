@@ -100,18 +100,18 @@
 
 
 
-<meta name="description" content="Links worth of considerring  https://blog.csdn.net/shile/article/details/78714189   Git init in the directory  git initInitialized empty Git repository in /media/pold/Work/Leopold.Sun/Blog/leopold-su">
+<meta name="description" content="Links worth of considerring https://blog.csdn.net/shile/article/details/78714189  Git init in the directory git initInitialized empty Git repository in /media/pold/Work/Leopold.Sun/Blog/leopold-sun/.g">
 <meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Using git to upload your blogs">
 <meta property="og:url" content="https://leopold-sun.github.io/Git-to-upload-blogs.html">
 <meta property="og:site_name" content="INFINITE">
-<meta property="og:description" content="Links worth of considerring  https://blog.csdn.net/shile/article/details/78714189   Git init in the directory  git initInitialized empty Git repository in /media/pold/Work/Leopold.Sun/Blog/leopold-su">
+<meta property="og:description" content="Links worth of considerring https://blog.csdn.net/shile/article/details/78714189  Git init in the directory git initInitialized empty Git repository in /media/pold/Work/Leopold.Sun/Blog/leopold-sun/.g">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-15T06:44:39.943Z">
+<meta property="og:updated_time" content="2019-01-17T06:24:41.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Using git to upload your blogs">
-<meta name="twitter:description" content="Links worth of considerring  https://blog.csdn.net/shile/article/details/78714189   Git init in the directory  git initInitialized empty Git repository in /media/pold/Work/Leopold.Sun/Blog/leopold-su">
+<meta name="twitter:description" content="Links worth of considerring https://blog.csdn.net/shile/article/details/78714189  Git init in the directory git initInitialized empty Git repository in /media/pold/Work/Leopold.Sun/Blog/leopold-sun/.g">
 
 
 
@@ -438,71 +438,46 @@
       
 
       
-        <ul>
-<li><p>Links worth of considerring</p>
-<blockquote>
+        <h3 id="Links-worth-of-considerring"><a href="#Links-worth-of-considerring" class="headerlink" title="Links worth of considerring"></a>Links worth of considerring</h3><blockquote>
 <p><a href="https://blog.csdn.net/shile/article/details/78714189" target="_blank" rel="noopener">https://blog.csdn.net/shile/article/details/78714189</a></p>
 </blockquote>
-</li>
-<li><p>Git init in the directory</p>
-<blockquote>
+<h3 id="Git-init-in-the-directory"><a href="#Git-init-in-the-directory" class="headerlink" title="Git init in the directory"></a>Git init in the directory</h3><blockquote>
 <p><code>git init</code><br>Initialized empty Git repository in /media/pold/Work/Leopold.Sun/Blog/leopold-sun/.git/</p>
 </blockquote>
-</li>
-<li><p>Configure SSH-key of github</p>
-<blockquote>
+<h3 id="Configure-SSH-key-of-github"><a href="#Configure-SSH-key-of-github" class="headerlink" title="Configure SSH-key of github"></a>Configure SSH-key of github</h3><blockquote>
 <p><code>ssh-keygen -t rsa -C your-email</code><br>put the id-rsa.pub in your github ssh settings</p>
 </blockquote>
-</li>
-<li><p>Git pull the repository of github</p>
-<blockquote>
+<h3 id="Git-pull-the-repository-of-github"><a href="#Git-pull-the-repository-of-github" class="headerlink" title="Git pull the repository of github"></a>Git pull the repository of github</h3><blockquote>
 <p><code>git clone git@github.com:Leopold-Sun/Leopold-Sun.github.io.git</code></p>
 </blockquote>
-</li>
-</ul>
 <a id="more"></a>
-<ul>
-<li><p>Connect local repository with remote one</p>
-<blockquote>
+<h3 id="Connect-local-repository-with-remote-one"><a href="#Connect-local-repository-with-remote-one" class="headerlink" title="Connect local repository with remote one"></a>Connect local repository with remote one</h3><blockquote>
 <p><code>git remote add origin git@github.com:Leopold-Sun/Leopold-Sun.github.io.git</code> <em>“origin” presents remote repository</em></p>
 </blockquote>
-</li>
-<li><p>Commit to github</p>
-<blockquote>
+<h3 id="Commit-to-github"><a href="#Commit-to-github" class="headerlink" title="Commit to github"></a>Commit to github</h3><blockquote>
 <p><code>git add .</code> <em>将要提交的文件信息（包括有修改过和新建的文件）添加到索引库</em><br><code>git commit -m &quot;message&quot;</code> <em>根据索引库的内容进行文件的提交</em><br><code>git push origin master</code></p>
 </blockquote>
-</li>
-<li><p>Creat one branch and commit to it</p>
-<blockquote>
+<h3 id="Creat-one-branch-and-commit-to-it"><a href="#Creat-one-branch-and-commit-to-it" class="headerlink" title="Creat one branch and commit to it"></a>Creat one branch and commit to it</h3><blockquote>
 <p><code>git branch pold-blog</code><br><code>git checkout pold-blog</code> <em>switch to anothe branch</em><br>add programs that you want to commit to github.<br><code>git add .</code><br><code>git commit -m &quot;message&quot;</code><br>here, if you haven’t connect your local repository with the remote, you may use <code>git remote add origin url</code> that the “url” should be you target github repository.<br><code>git push origin pold-blog</code></p>
 </blockquote>
-</li>
-<li><p>check infos of branch</p>
-<blockquote>
+<h3 id="check-infos-of-branch"><a href="#check-infos-of-branch" class="headerlink" title="check infos of branch"></a>check infos of branch</h3><blockquote>
 <p>check local branches<br><code>git branch</code><br>check remote branches<br><code>git branch -r</code><br>switch to local branch<br><code>git checkout ${local branch}</code></p>
 </blockquote>
-</li>
-<li><p>Merge branches</p>
-<blockquote>
+<h3 id="Merge-branches"><a href="#Merge-branches" class="headerlink" title="Merge branches"></a>Merge branches</h3><blockquote>
 <p>from remote branch to local branch<br><code>git pull origin ${remote branch}:${local branch}</code> <em>git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</em><br>or<br><code>git pull origin ${remote branch}</code> <em>we could delete the local branch name to merge local active branch with remote branch</em><br>Or we could fetch first and merge following<br><code>git fetch origin</code><br><code>git merge origin:${remote branch}$</code> <em>local branch is hided</em><br>push local branch to remote branch<br><code>git push origin ${remote branch}:${local branch}</code></p>
 </blockquote>
-</li>
-<li><p>Make a backup branch for your hexo configuration</p>
-<blockquote>
+<h3 id="Make-a-backup-branch-for-your-hexo-configuration"><a href="#Make-a-backup-branch-for-your-hexo-configuration" class="headerlink" title="Make a backup branch for your hexo configuration"></a>Make a backup branch for your hexo configuration</h3><blockquote>
 <p><code>git init</code> <em>initialize your local repo</em><br><code>git add ${files you wanted to backup}</code><br><code>git commit -m &quot;message&quot;</code><br><code>git branch ${new branch}</code><br><code>git checkout ${new branch}</code><br><code>git remote add origin ${repo url}</code><br><code>git push origin ${new branch}</code> <em>this would creat a new branch on your remote branch</em></p>
 </blockquote>
-</li>
-<li><p>Blog migrated to a new env</p>
-<blockquote>
+<h3 id="Blog-migrated-to-a-new-env"><a href="#Blog-migrated-to-a-new-env" class="headerlink" title="Blog migrated to a new env"></a>Blog migrated to a new env</h3><blockquote>
 <p>you should already have installed nodejs+git+hexo<br><code>git clone -b ${backup branch} git@github.com:user/user.github.io.git  //将Github中hexo分支clone到本地</code><br><code>cd user.github.io</code><br><code>npm install</code><br><code>git init</code><br><code>git remote add origin ${repo url}</code><br><code>git pull origin ${backup branch on origin repo}</code></p>
 </blockquote>
-</li>
-<li><p>Backup and deployment of new blogs</p>
-<blockquote>
+<h3 id="Backup-and-deployment-of-new-blogs"><a href="#Backup-and-deployment-of-new-blogs" class="headerlink" title="Backup and deployment of new blogs"></a>Backup and deployment of new blogs</h3><blockquote>
 <p><code>git pull origin ${local branch}</code> <em>本地与远端融合</em><br><code>hexo new post &quot;new post name&quot;</code><br><code>git add source</code><br><code>git commit -m &quot;message&quot;</code><br><code>git push origin ${the backup branch}</code> <em>backup</em><br><code>hexo d -g</code> <em>deployment</em></p>
 </blockquote>
-</li>
-</ul>
+<h3 id="Merge-partial-files-directories-to-another-branch"><a href="#Merge-partial-files-directories-to-another-branch" class="headerlink" title="Merge partial files/directories to another branch"></a>Merge partial files/directories to another branch</h3><blockquote>
+<p>git branch  //check current branch<br>git checkout ${branch contains the new files/dorectories}  //merge files/directories form anothe branch to current branch</p>
+</blockquote>
 
       
     </div>
@@ -535,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/vppIns.html" rel="prev" title="VPP instructions">
-                <i class="fa fa-chevron-left"></i> VPP instructions
+              <a href="/Netperf_to_vpp.html" rel="prev" title="Using netperf to test vpp performance">
+                <i class="fa fa-chevron-left"></i> Using netperf to test vpp performance
               </a>
             
           </div>
@@ -545,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/america_drama.html" rel="next" title="Drama & Film">
-                Drama & Film <i class="fa fa-chevron-right"></i>
+              <a href="/vppIns.html" rel="next" title="VPP instructions">
+                VPP instructions <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -600,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -734,6 +718,22 @@ show_date_time();
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Links-worth-of-considerring"><span class="nav-number">1.</span> <span class="nav-text">Links worth of considerring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-init-in-the-directory"><span class="nav-number">2.</span> <span class="nav-text">Git init in the directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-SSH-key-of-github"><span class="nav-number">3.</span> <span class="nav-text">Configure SSH-key of github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-pull-the-repository-of-github"><span class="nav-number">4.</span> <span class="nav-text">Git pull the repository of github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-local-repository-with-remote-one"><span class="nav-number">5.</span> <span class="nav-text">Connect local repository with remote one</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Commit-to-github"><span class="nav-number">6.</span> <span class="nav-text">Commit to github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creat-one-branch-and-commit-to-it"><span class="nav-number">7.</span> <span class="nav-text">Creat one branch and commit to it</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#check-infos-of-branch"><span class="nav-number">8.</span> <span class="nav-text">check infos of branch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-branches"><span class="nav-number">9.</span> <span class="nav-text">Merge branches</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Make-a-backup-branch-for-your-hexo-configuration"><span class="nav-number">10.</span> <span class="nav-text">Make a backup branch for your hexo configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blog-migrated-to-a-new-env"><span class="nav-number">11.</span> <span class="nav-text">Blog migrated to a new env</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backup-and-deployment-of-new-blogs"><span class="nav-number">12.</span> <span class="nav-text">Backup and deployment of new blogs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-partial-files-directories-to-another-branch"><span class="nav-number">13.</span> <span class="nav-text">Merge partial files/directories to another branch</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

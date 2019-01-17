@@ -680,176 +680,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leopold-sun.github.io/vppIns.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leopold.Seagal">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/europe-man.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="INFINITE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/vppIns.html" itemprop="url">VPP instructions</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-09T00:00:00+08:00">
-                2018-12-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/VPP/" itemprop="url" rel="index">
-                    <span itemprop="name">VPP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="非交互模式（Linux下）"><a href="#非交互模式（Linux下）" class="headerlink" title="非交互模式（Linux下）"></a><em>非交互模式（Linux下）</em></h5><p>Linux创建veth接口对： ip link add name vpp1out type veth peer name vpp1host </p>
-<p>Linux启动veth接口的两端：ip link set  ${veth-name} up</p>
-<p>Linux为veth配置IP地址： ip addr add 10.10.1.1/24 dev vpp1host  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip link add veth0 type veth peer name veth1</span><br><span class="line">ip addr add 10.1.0.1/24 dev veth0</span><br><span class="line">ip addr add 10.1.0.2/24 dev veth1</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/vppIns.html" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://leopold-sun.github.io/Git-to-upload-blogs.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -974,31 +804,191 @@
 
       
         
-          <ul>
-<li><p>Links worth of considerring</p>
-<blockquote>
+          <h3 id="Links-worth-of-considerring"><a href="#Links-worth-of-considerring" class="headerlink" title="Links worth of considerring"></a>Links worth of considerring</h3><blockquote>
 <p><a href="https://blog.csdn.net/shile/article/details/78714189" target="_blank" rel="noopener">https://blog.csdn.net/shile/article/details/78714189</a></p>
 </blockquote>
-</li>
-<li><p>Git init in the directory</p>
-<blockquote>
+<h3 id="Git-init-in-the-directory"><a href="#Git-init-in-the-directory" class="headerlink" title="Git init in the directory"></a>Git init in the directory</h3><blockquote>
 <p><code>git init</code><br>Initialized empty Git repository in /media/pold/Work/Leopold.Sun/Blog/leopold-sun/.git/</p>
 </blockquote>
-</li>
-<li><p>Configure SSH-key of github</p>
-<blockquote>
+<h3 id="Configure-SSH-key-of-github"><a href="#Configure-SSH-key-of-github" class="headerlink" title="Configure SSH-key of github"></a>Configure SSH-key of github</h3><blockquote>
 <p><code>ssh-keygen -t rsa -C your-email</code><br>put the id-rsa.pub in your github ssh settings</p>
 </blockquote>
-</li>
-<li><p>Git pull the repository of github</p>
-<blockquote>
+<h3 id="Git-pull-the-repository-of-github"><a href="#Git-pull-the-repository-of-github" class="headerlink" title="Git pull the repository of github"></a>Git pull the repository of github</h3><blockquote>
 <p><code>git clone git@github.com:Leopold-Sun/Leopold-Sun.github.io.git</code></p>
 </blockquote>
-</li>
-</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Git-to-upload-blogs.html" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.github.io/vppIns.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leopold.Seagal">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/europe-man.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="INFINITE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/vppIns.html" itemprop="url">VPP instructions</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-09T00:00:00+08:00">
+                2018-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/VPP/" itemprop="url" rel="index">
+                    <span itemprop="name">VPP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h5 id="非交互模式（Linux下）"><a href="#非交互模式（Linux下）" class="headerlink" title="非交互模式（Linux下）"></a><em>非交互模式（Linux下）</em></h5><p>Linux创建veth接口对： ip link add name vpp1out type veth peer name vpp1host </p>
+<p>Linux启动veth接口的两端：ip link set  ${veth-name} up</p>
+<p>Linux为veth配置IP地址： ip addr add 10.10.1.1/24 dev vpp1host  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip link add veth0 type veth peer name veth1</span><br><span class="line">ip addr add 10.1.0.1/24 dev veth0</span><br><span class="line">ip addr add 10.1.0.2/24 dev veth1</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/vppIns.html" rel="contents">
               Read more &raquo;
             </a>
           </div>
