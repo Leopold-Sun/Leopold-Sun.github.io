@@ -1872,7 +1872,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #344d3b;
+  background: #018c29;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2348,7 +2348,7 @@ embed {
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
 }
-body {
+main {
   background: url("/images/mobilepaper/black3.jpeg");
   background-attachment: fixed;
   background-size: cover;
