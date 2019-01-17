@@ -12,6 +12,93 @@ Front Proxy is a representative sandbox of Envoy service mesh. The routing polic
 <!-- more -->
 -------------
 
+# Preliminaries
+
+> [2016: A Comprehensive Guide To Singly Linked List Using C++](https://www.codementor.io/codementorteam/a-comprehensive-guide-to-implementation-of-singly-linked-list-using-c_plus_plus-ondlm5azr)
+
+## C/C++ 链表
+
+> A linked list is a data structure that can store an indefinite amount of items. These items are connected using pointers in a sequential manner.
+
+### 数组与链表优劣比较
+
+| comparison | array | linklist |
+| --- | --- | --- |
+| address | 分配连续的内存地址 | 用时分配，内存地址可以不连续 |
+| search | O(1) | O(n) |
+| add/delete | O(n) | O(1) |
+| size | 数组在被定义时大小被固定 | 按需动态地申请内存 |
+| data type | 同一个数组元素类型一致 | 链表结构可存储多种类型的数据 |
+| type | array | 单链表，循环链表，双向链表 |
+
+### 链表
+
+### 链表类别
+
+1. 单链表<singly-linked list>
+> 每个链表元素包含存储的数值和指向后驱元素的link，最后一个元素指向NULL。
+2. 双向链表<doubly-linked list>
+> 双向链表的元素包含存储的数值与前、后驱link。
+
+### 链表元素
+
+- 一般元素
+> linklist的元素被定义为`node`。`node`结构包含`data`和`next`两部分。`data`部分可以包含不止一个数值变量，`next`存储`the next node`的地址，也即是表示上述
+- 头部元素
+> 链表的第一`node`被称为`head`。
+- 尾部元素
+> 链表的最后一个`node`被称为`tail`。
+
+### 链表的C++实现
+
+```c++
+struct node
+{
+  int data;
+  node *Next;
+};
+```
+
+#### C++链表创建
+
+```c++
+class list
+{
+  Private:
+    node *head,*tail;
+  Public:
+    list()
+    {
+      //指向NULL避免产生内存垃圾
+      head=NULL;
+      tail=NULL;
+    }
+    
+    //creation
+    void creatnode(int value)
+    {
+      node *temp=new node;
+      temp->data=value;
+      //最后一个node的next指向NULL
+      temp->next=NULL;
+      if(head==NULL)
+      {
+        head=temp;
+        tail=temp;
+        //已将temp地址赋值给head和tail，temp的值（其表示的地址）已经不需要了
+        temp=NULL;
+      }
+      else
+      {
+        tail->next=temp;
+        tail=temp;
+      }
+    }
+};
+```
+
+------------------------
+
 # Route Policy Analysis
 
 ## Locate router.h
