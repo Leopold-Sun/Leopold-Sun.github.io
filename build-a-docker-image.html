@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('Password:') !== ''){
+                alert('Error！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/rose.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/rose.jpeg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="docker,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="INFINITE" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Let’s see how to build our own docker image. Creat and configure Dockerfile123456789$ sudo vim Dockerfile$ cat Dockerfile\#This is a sample Image FROM ubuntu MAINTAINER leopold.sga@outlook.com RUN apt">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="build a docker image">
+<meta property="og:url" content="https://leopold-sun.github.io/build-a-docker-image.html">
+<meta property="og:site_name" content="INFINITE">
+<meta property="og:description" content="Let’s see how to build our own docker image. Creat and configure Dockerfile123456789$ sudo vim Dockerfile$ cat Dockerfile\#This is a sample Image FROM ubuntu MAINTAINER leopold.sga@outlook.com RUN apt">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-07T06:47:46.979Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="build a docker image">
+<meta name="twitter:description" content="Let’s see how to build our own docker image. Creat and configure Dockerfile123456789$ sudo vim Dockerfile$ cat Dockerfile\#This is a sample Image FROM ubuntu MAINTAINER leopold.sga@outlook.com RUN apt">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://leopold-sun.github.io/build-a-docker-image.html">
+
+
+
+
+
+  <title>build a docker image | INFINITE</title>
+  
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">INFINITE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">银月无迹   洛水焉痕   陌上花开   氤氲清浅</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-leopold-seagal">
+          <a href="/Leopold-Seagal/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            Leopold-Seagal
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.github.io/build-a-docker-image.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leopold.Seagal">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/europe-man.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="INFINITE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">build a docker image</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-07T14:24:14+08:00">
+                2019-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Let’s see how to build our own docker image.</p>
+<h1 id="Creat-and-configure-Dockerfile"><a href="#Creat-and-configure-Dockerfile" class="headerlink" title="Creat and configure Dockerfile"></a>Creat and configure Dockerfile</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim Dockerfile</span><br><span class="line">$ cat Dockerfile</span><br><span class="line">\<span class="comment">#This is a sample Image </span></span><br><span class="line">FROM ubuntu </span><br><span class="line">MAINTAINER leopold.sga@outlook.com </span><br><span class="line"></span><br><span class="line">RUN apt-get update </span><br><span class="line">RUN apt-get install -y nginx</span><br><span class="line">CMD [“<span class="built_in">echo</span>”,”Image created”]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>#</code> is followed by commments</li>
+<li><code>FROM</code> represents what base image your image is based from</li>
+<li><code>RNU</code> to run commands in your image</li>
+<li><code>CMD</code> to display messages to user.</li>
+</ul>
+<a id="more"></a>
+<h1 id="Build-image"><a href="#Build-image" class="headerlink" title="Build image"></a>Build image</h1><h2 id="Used-command"><a href="#Used-command" class="headerlink" title="Used command"></a>Used command</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build  -t ImageName:TagName dir</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-t</code> to maintain a tag to the image</li>
+</ul>
+<h2 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker build -t testimage:001 .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/5 : FROM ubuntu</span><br><span class="line"> ---&gt; 1d9c17228a9e</span><br><span class="line">Step 2/5 : MAINTAINER leopold.sga@outlook.com</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 89fb5a6d79a5</span><br><span class="line">Removing intermediate container 89fb5a6d79a5</span><br><span class="line"> ---&gt; 0c4a290ef5da</span><br><span class="line">Step 3/5 : RUN apt-get update</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 260d98be930f</span><br><span class="line">Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [83.2 kB]</span><br><span class="line">Get:2 http://archive.ubuntu.com/ubuntu bionic InRelease [242 kB]</span><br><span class="line">Get:3 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [135 kB]</span><br><span class="line">Get:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]</span><br><span class="line">Get:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]</span><br><span class="line">Get:6 http://archive.ubuntu.com/ubuntu bionic/restricted amd64 Packages [13.5 kB]</span><br><span class="line">Get:7 http://archive.ubuntu.com/ubuntu bionic/multiverse amd64 Packages [186 kB]</span><br><span class="line">Get:8 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [1367 B]</span><br><span class="line">Get:9 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [300 kB]</span><br><span class="line">Get:10 http://archive.ubuntu.com/ubuntu bionic/universe amd64 Packages [11.3 MB]</span><br><span class="line">Get:11 http://archive.ubuntu.com/ubuntu bionic/main amd64 Packages [1344 kB]</span><br><span class="line">Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 Packages [6931 B]</span><br><span class="line">Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [618 kB]</span><br><span class="line">Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [10.7 kB]</span><br><span class="line">Get:15 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [900 kB]</span><br><span class="line">Get:16 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 Packages [3655 B]</span><br><span class="line">Fetched 15.3 MB <span class="keyword">in</span> 6s (2567 kB/s)</span><br><span class="line">Reading package lists...</span><br><span class="line">Removing intermediate container 260d98be930f</span><br><span class="line"> ---&gt; 7898b3003be4</span><br><span class="line">Step 4/5 : RUN apt-get install -y nginx</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> ae04d4b93edb</span><br><span class="line">Reading package lists...</span><br><span class="line">Building dependency tree...</span><br><span class="line">Reading state information...</span><br><span class="line">The following additional packages will be installed:</span><br><span class="line">  fontconfig-config fonts-dejavu-core geoip-database iproute2 libatm1 libbsd0</span><br><span class="line">  libelf1 libexpat1 libfontconfig1 libfreetype6 libgd3 libgeoip1 libicu60</span><br><span class="line">  libjbig0 libjpeg-turbo8 libjpeg8 libmnl0 libnginx-mod-http-geoip</span><br><span class="line">  libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter</span><br><span class="line">  libnginx-mod-mail libnginx-mod-stream libpng16-16 libssl1.1 libtiff5</span><br><span class="line">  libwebp6 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxml2 libxpm4</span><br><span class="line">  libxslt1.1 libxtables12 multiarch-support nginx-common nginx-core ucf</span><br><span class="line">Suggested packages:</span><br><span class="line">  iproute2-doc libgd-tools geoip-bin fcgiwrap nginx-doc ssl-cert</span><br><span class="line">The following NEW packages will be installed:</span><br><span class="line">  fontconfig-config fonts-dejavu-core geoip-database iproute2 libatm1 libbsd0</span><br><span class="line">  libelf1 libexpat1 libfontconfig1 libfreetype6 libgd3 libgeoip1 libicu60</span><br><span class="line">  libjbig0 libjpeg-turbo8 libjpeg8 libmnl0 libnginx-mod-http-geoip</span><br><span class="line">  libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter</span><br><span class="line">  libnginx-mod-mail libnginx-mod-stream libpng16-16 libssl1.1 libtiff5</span><br><span class="line">  libwebp6 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxml2 libxpm4</span><br><span class="line">  libxslt1.1 libxtables12 multiarch-support nginx nginx-common nginx-core ucf</span><br><span class="line">0 upgraded, 40 newly installed, 0 to remove and 0 not upgraded.</span><br><span class="line">Need to get 16.9 MB of archives.</span><br><span class="line">After this operation, 61.4 MB of additional disk space will be used.</span><br><span class="line">Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 multiarch-support amd64 2.27-3ubuntu1 [6916 B]</span><br><span class="line">Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxau6 amd64 1:1.0.8-1 [8376 B]</span><br><span class="line">Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libjpeg-turbo8 amd64 1.5.2-0ubuntu5.18.04.1 [110 kB]</span><br><span class="line">Get:4 http://archive.ubuntu.com/ubuntu bionic/main amd64 libelf1 amd64 0.170-0.4 [44.1 kB]</span><br><span class="line">Get:5 http://archive.ubuntu.com/ubuntu bionic/main amd64 libmnl0 amd64 1.0.4-2 [12.3 kB]</span><br><span class="line">Get:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 iproute2 amd64 4.15.0-2ubuntu1 [721 kB]</span><br><span class="line">Get:7 http://archive.ubuntu.com/ubuntu bionic/main amd64 libatm1 amd64 1:2.5.1-2build1 [21.9 kB]</span><br><span class="line">Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libbsd0 amd64 0.8.7-1 [41.5 kB]</span><br><span class="line">Get:9 http://archive.ubuntu.com/ubuntu bionic/main amd64 libexpat1 amd64 2.2.5-3 [80.2 kB]</span><br><span class="line">Get:10 http://archive.ubuntu.com/ubuntu bionic/main amd64 libicu60 amd64 60.2-3ubuntu3 [8054 kB]</span><br><span class="line">Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libssl1.1 amd64 1.1.0g-2ubuntu4.3 [1130 kB]</span><br><span class="line">Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxml2 amd64 2.9.4+dfsg1-6.1ubuntu1.2 [663 kB]</span><br><span class="line">Get:13 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxtables12 amd64 1.6.1-2ubuntu2 [27.9 kB]</span><br><span class="line">Get:14 http://archive.ubuntu.com/ubuntu bionic/main amd64 ucf all 3.0038 [50.5 kB]</span><br><span class="line">Get:15 http://archive.ubuntu.com/ubuntu bionic/main amd64 geoip-database all 20180315-1 [2090 kB]</span><br><span class="line">Get:16 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgeoip1 amd64 1.6.12-1 [71.8 kB]</span><br><span class="line">Get:17 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpng16-16 amd64 1.6.34-1ubuntu0.18.04.1 [176 kB]</span><br><span class="line">Get:18 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxdmcp6 amd64 1:1.1.2-3 [10.7 kB]</span><br><span class="line">Get:19 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb1 amd64 1.13-1 [45.6 kB]</span><br><span class="line">Get:20 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-data all 2:1.6.4-3ubuntu0.1 [113 kB]</span><br><span class="line">Get:21 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-6 amd64 2:1.6.4-3ubuntu0.1 [571 kB]</span><br><span class="line">Get:22 http://archive.ubuntu.com/ubuntu bionic/main amd64 fonts-dejavu-core all 2.37-1 [1041 kB]</span><br><span class="line">Get:23 http://archive.ubuntu.com/ubuntu bionic/main amd64 fontconfig-config all 2.12.6-0ubuntu2 [55.8 kB]</span><br><span class="line">Get:24 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfreetype6 amd64 2.8.1-2ubuntu2 [335 kB]</span><br><span class="line">Get:25 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfontconfig1 amd64 2.12.6-0ubuntu2 [137 kB]</span><br><span class="line">Get:26 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjpeg8 amd64 8c-2ubuntu8 [2194 B]</span><br><span class="line">Get:27 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjbig0 amd64 2.1-3.1build1 [26.7 kB]</span><br><span class="line">Get:28 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtiff5 amd64 4.0.9-5 [152 kB]</span><br><span class="line">Get:29 http://archive.ubuntu.com/ubuntu bionic/main amd64 libwebp6 amd64 0.6.1-2 [185 kB]</span><br><span class="line">Get:30 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxpm4 amd64 1:3.5.12-1 [34.0 kB]</span><br><span class="line">Get:31 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgd3 amd64 2.2.5-4ubuntu0.2 [119 kB]</span><br><span class="line">Get:32 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 nginx-common all 1.14.0-0ubuntu1.2 [37.4 kB]</span><br><span class="line">Get:33 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-geoip amd64 1.14.0-0ubuntu1.2 [11.2 kB]</span><br><span class="line">Get:34 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-image-filter amd64 1.14.0-0ubuntu1.2 [14.5 kB]</span><br><span class="line">Get:35 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxslt1.1 amd64 1.1.29-5 [150 kB]</span><br><span class="line">Get:36 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-xslt-filter amd64 1.14.0-0ubuntu1.2 [13.0 kB]</span><br><span class="line">Get:37 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-mail amd64 1.14.0-0ubuntu1.2 [41.8 kB]</span><br><span class="line">Get:38 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-stream amd64 1.14.0-0ubuntu1.2 [63.6 kB]</span><br><span class="line">Get:39 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 nginx-core amd64 1.14.0-0ubuntu1.2 [413 kB]</span><br><span class="line">Get:40 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 nginx all 1.14.0-0ubuntu1.2 [3596 B]</span><br><span class="line">debconf: delaying package configuration, since apt-utils is not installed</span><br><span class="line">Fetched 16.9 MB <span class="keyword">in</span> 6s (2742 kB/s)</span><br><span class="line">Selecting previously unselected package multiarch-support.</span><br><span class="line">(Reading database ... 4039 files and directories currently installed.)</span><br><span class="line">Preparing to unpack .../multiarch-support_2.27-3ubuntu1_amd64.deb ...</span><br><span class="line">Unpacking multiarch-support (2.27-3ubuntu1) ...</span><br><span class="line">Setting up multiarch-support (2.27-3ubuntu1) ...</span><br><span class="line">Selecting previously unselected package libxau6:amd64.</span><br><span class="line">(Reading database ... 4042 files and directories currently installed.)</span><br><span class="line">Preparing to unpack .../00-libxau6_1%3a1.0.8-1_amd64.deb ...</span><br><span class="line">Unpacking libxau6:amd64 (1:1.0.8-1) ...</span><br><span class="line">Selecting previously unselected package libjpeg-turbo8:amd64.</span><br><span class="line">Preparing to unpack .../01-libjpeg-turbo8_1.5.2-0ubuntu5.18.04.1_amd64.deb ...</span><br><span class="line">Unpacking libjpeg-turbo8:amd64 (1.5.2-0ubuntu5.18.04.1) ...</span><br><span class="line">Selecting previously unselected package libelf1:amd64.</span><br><span class="line">Preparing to unpack .../02-libelf1_0.170-0.4_amd64.deb ...</span><br><span class="line">Unpacking libelf1:amd64 (0.170-0.4) ...</span><br><span class="line">Selecting previously unselected package libmnl0:amd64.</span><br><span class="line">Preparing to unpack .../03-libmnl0_1.0.4-2_amd64.deb ...</span><br><span class="line">Unpacking libmnl0:amd64 (1.0.4-2) ...</span><br><span class="line">Selecting previously unselected package iproute2.</span><br><span class="line">Preparing to unpack .../04-iproute2_4.15.0-2ubuntu1_amd64.deb ...</span><br><span class="line">Unpacking iproute2 (4.15.0-2ubuntu1) ...</span><br><span class="line">Selecting previously unselected package libatm1:amd64.</span><br><span class="line">Preparing to unpack .../05-libatm1_1%3a2.5.1-2build1_amd64.deb ...</span><br><span class="line">Unpacking libatm1:amd64 (1:2.5.1-2build1) ...</span><br><span class="line">Selecting previously unselected package libbsd0:amd64.</span><br><span class="line">Preparing to unpack .../06-libbsd0_0.8.7-1_amd64.deb ...</span><br><span class="line">Unpacking libbsd0:amd64 (0.8.7-1) ...</span><br><span class="line">Selecting previously unselected package libexpat1:amd64.</span><br><span class="line">Preparing to unpack .../07-libexpat1_2.2.5-3_amd64.deb ...</span><br><span class="line">Unpacking libexpat1:amd64 (2.2.5-3) ...</span><br><span class="line">Selecting previously unselected package libicu60:amd64.</span><br><span class="line">Preparing to unpack .../08-libicu60_60.2-3ubuntu3_amd64.deb ...</span><br><span class="line">Unpacking libicu60:amd64 (60.2-3ubuntu3) ...</span><br><span class="line">Selecting previously unselected package libssl1.1:amd64.</span><br><span class="line">Preparing to unpack .../09-libssl1.1_1.1.0g-2ubuntu4.3_amd64.deb ...</span><br><span class="line">Unpacking libssl1.1:amd64 (1.1.0g-2ubuntu4.3) ...</span><br><span class="line">Selecting previously unselected package libxml2:amd64.</span><br><span class="line">Preparing to unpack .../10-libxml2_2.9.4+dfsg1-6.1ubuntu1.2_amd64.deb ...</span><br><span class="line">Unpacking libxml2:amd64 (2.9.4+dfsg1-6.1ubuntu1.2) ...</span><br><span class="line">Selecting previously unselected package libxtables12:amd64.</span><br><span class="line">Preparing to unpack .../11-libxtables12_1.6.1-2ubuntu2_amd64.deb ...</span><br><span class="line">Unpacking libxtables12:amd64 (1.6.1-2ubuntu2) ...</span><br><span class="line">Selecting previously unselected package ucf.</span><br><span class="line">Preparing to unpack .../12-ucf_3.0038_all.deb ...</span><br><span class="line">Moving old data out of the way</span><br><span class="line">Unpacking ucf (3.0038) ...</span><br><span class="line">Selecting previously unselected package geoip-database.</span><br><span class="line">Preparing to unpack .../13-geoip-database_20180315-1_all.deb ...</span><br><span class="line">Unpacking geoip-database (20180315-1) ...</span><br><span class="line">Selecting previously unselected package libgeoip1:amd64.</span><br><span class="line">Preparing to unpack .../14-libgeoip1_1.6.12-1_amd64.deb ...</span><br><span class="line">Unpacking libgeoip1:amd64 (1.6.12-1) ...</span><br><span class="line">Selecting previously unselected package libpng16-16:amd64.</span><br><span class="line">Preparing to unpack .../15-libpng16-16_1.6.34-1ubuntu0.18.04.1_amd64.deb ...</span><br><span class="line">Unpacking libpng16-16:amd64 (1.6.34-1ubuntu0.18.04.1) ...</span><br><span class="line">Selecting previously unselected package libxdmcp6:amd64.</span><br><span class="line">Preparing to unpack .../16-libxdmcp6_1%3a1.1.2-3_amd64.deb ...</span><br><span class="line">Unpacking libxdmcp6:amd64 (1:1.1.2-3) ...</span><br><span class="line">Selecting previously unselected package libxcb1:amd64.</span><br><span class="line">Preparing to unpack .../17-libxcb1_1.13-1_amd64.deb ...</span><br><span class="line">Unpacking libxcb1:amd64 (1.13-1) ...</span><br><span class="line">Selecting previously unselected package libx11-data.</span><br><span class="line">Preparing to unpack .../18-libx11-data_2%3a1.6.4-3ubuntu0.1_all.deb ...</span><br><span class="line">Unpacking libx11-data (2:1.6.4-3ubuntu0.1) ...</span><br><span class="line">Selecting previously unselected package libx11-6:amd64.</span><br><span class="line">Preparing to unpack .../19-libx11-6_2%3a1.6.4-3ubuntu0.1_amd64.deb ...</span><br><span class="line">Unpacking libx11-6:amd64 (2:1.6.4-3ubuntu0.1) ...</span><br><span class="line">Selecting previously unselected package fonts-dejavu-core.</span><br><span class="line">Preparing to unpack .../20-fonts-dejavu-core_2.37-1_all.deb ...</span><br><span class="line">Unpacking fonts-dejavu-core (2.37-1) ...</span><br><span class="line">Selecting previously unselected package fontconfig-config.</span><br><span class="line">Preparing to unpack .../21-fontconfig-config_2.12.6-0ubuntu2_all.deb ...</span><br><span class="line">Unpacking fontconfig-config (2.12.6-0ubuntu2) ...</span><br><span class="line">Selecting previously unselected package libfreetype6:amd64.</span><br><span class="line">Preparing to unpack .../22-libfreetype6_2.8.1-2ubuntu2_amd64.deb ...</span><br><span class="line">Unpacking libfreetype6:amd64 (2.8.1-2ubuntu2) ...</span><br><span class="line">Selecting previously unselected package libfontconfig1:amd64.</span><br><span class="line">Preparing to unpack .../23-libfontconfig1_2.12.6-0ubuntu2_amd64.deb ...</span><br><span class="line">Unpacking libfontconfig1:amd64 (2.12.6-0ubuntu2) ...</span><br><span class="line">Selecting previously unselected package libjpeg8:amd64.</span><br><span class="line">Preparing to unpack .../24-libjpeg8_8c-2ubuntu8_amd64.deb ...</span><br><span class="line">Unpacking libjpeg8:amd64 (8c-2ubuntu8) ...</span><br><span class="line">Selecting previously unselected package libjbig0:amd64.</span><br><span class="line">Preparing to unpack .../25-libjbig0_2.1-3.1build1_amd64.deb ...</span><br><span class="line">Unpacking libjbig0:amd64 (2.1-3.1build1) ...</span><br><span class="line">Selecting previously unselected package libtiff5:amd64.</span><br><span class="line">Preparing to unpack .../26-libtiff5_4.0.9-5_amd64.deb ...</span><br><span class="line">Unpacking libtiff5:amd64 (4.0.9-5) ...</span><br><span class="line">Selecting previously unselected package libwebp6:amd64.</span><br><span class="line">Preparing to unpack .../27-libwebp6_0.6.1-2_amd64.deb ...</span><br><span class="line">Unpacking libwebp6:amd64 (0.6.1-2) ...</span><br><span class="line">Selecting previously unselected package libxpm4:amd64.</span><br><span class="line">Preparing to unpack .../28-libxpm4_1%3a3.5.12-1_amd64.deb ...</span><br><span class="line">Unpacking libxpm4:amd64 (1:3.5.12-1) ...</span><br><span class="line">Selecting previously unselected package libgd3:amd64.</span><br><span class="line">Preparing to unpack .../29-libgd3_2.2.5-4ubuntu0.2_amd64.deb ...</span><br><span class="line">Unpacking libgd3:amd64 (2.2.5-4ubuntu0.2) ...</span><br><span class="line">Selecting previously unselected package nginx-common.</span><br><span class="line">Preparing to unpack .../30-nginx-common_1.14.0-0ubuntu1.2_all.deb ...</span><br><span class="line">Unpacking nginx-common (1.14.0-0ubuntu1.2) ...</span><br><span class="line">Selecting previously unselected package libnginx-mod-http-geoip.</span><br><span class="line">Preparing to unpack .../31-libnginx-mod-http-geoip_1.14.0-0ubuntu1.2_amd64.deb ...</span><br><span class="line">Unpacking libnginx-mod-http-geoip (1.14.0-0ubuntu1.2) ...</span><br><span class="line">Selecting previously unselected package libnginx-mod-http-image-filter.</span><br><span class="line">Preparing to unpack .../32-libnginx-mod-http-image-filter_1.14.0-0ubuntu1.2_amd64.deb ...</span><br><span class="line">Unpacking libnginx-mod-http-image-filter (1.14.0-0ubuntu1.2) ...</span><br><span class="line">Selecting previously unselected package libxslt1.1:amd64.</span><br><span class="line">Preparing to unpack .../33-libxslt1.1_1.1.29-5_amd64.deb ...</span><br><span class="line">Unpacking libxslt1.1:amd64 (1.1.29-5) ...</span><br><span class="line">Selecting previously unselected package libnginx-mod-http-xslt-filter.</span><br><span class="line">Preparing to unpack .../34-libnginx-mod-http-xslt-filter_1.14.0-0ubuntu1.2_amd64.deb ...</span><br><span class="line">Unpacking libnginx-mod-http-xslt-filter (1.14.0-0ubuntu1.2) ...</span><br><span class="line">Selecting previously unselected package libnginx-mod-mail.</span><br><span class="line">Preparing to unpack .../35-libnginx-mod-mail_1.14.0-0ubuntu1.2_amd64.deb ...</span><br><span class="line">Unpacking libnginx-mod-mail (1.14.0-0ubuntu1.2) ...</span><br><span class="line">Selecting previously unselected package libnginx-mod-stream.</span><br><span class="line">Preparing to unpack .../36-libnginx-mod-stream_1.14.0-0ubuntu1.2_amd64.deb ...</span><br><span class="line">Unpacking libnginx-mod-stream (1.14.0-0ubuntu1.2) ...</span><br><span class="line">Selecting previously unselected package nginx-core.</span><br><span class="line">Preparing to unpack .../37-nginx-core_1.14.0-0ubuntu1.2_amd64.deb ...</span><br><span class="line">Unpacking nginx-core (1.14.0-0ubuntu1.2) ...</span><br><span class="line">Selecting previously unselected package nginx.</span><br><span class="line">Preparing to unpack .../38-nginx_1.14.0-0ubuntu1.2_all.deb ...</span><br><span class="line">Unpacking nginx (1.14.0-0ubuntu1.2) ...</span><br><span class="line">Setting up libexpat1:amd64 (2.2.5-3) ...</span><br><span class="line">Setting up libicu60:amd64 (60.2-3ubuntu3) ...</span><br><span class="line">Setting up geoip-database (20180315-1) ...</span><br><span class="line">Setting up libpng16-16:amd64 (1.6.34-1ubuntu0.18.04.1) ...</span><br><span class="line">Setting up libjbig0:amd64 (2.1-3.1build1) ...</span><br><span class="line">Setting up fonts-dejavu-core (2.37-1) ...</span><br><span class="line">Setting up libelf1:amd64 (0.170-0.4) ...</span><br><span class="line">Setting up nginx-common (1.14.0-0ubuntu1.2) ...</span><br><span class="line">debconf: unable to initialize frontend: Dialog</span><br><span class="line">debconf: (TERM is not <span class="built_in">set</span>, so the dialog frontend is not usable.)</span><br><span class="line">debconf: falling back to frontend: Readline</span><br><span class="line">debconf: unable to initialize frontend: Readline</span><br><span class="line">debconf: (Can<span class="string">'t locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.26.1 /usr/local/share/perl/5.26.1 /usr/lib/x86_64-linux-gnu/perl5/5.26 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.26 /usr/share/perl/5.26 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)</span></span><br><span class="line"><span class="string">debconf: falling back to frontend: Teletype</span></span><br><span class="line"><span class="string">Setting up libjpeg-turbo8:amd64 (1.5.2-0ubuntu5.18.04.1) ...</span></span><br><span class="line"><span class="string">Setting up libgeoip1:amd64 (1.6.12-1) ...</span></span><br><span class="line"><span class="string">Setting up libbsd0:amd64 (0.8.7-1) ...</span></span><br><span class="line"><span class="string">Setting up ucf (3.0038) ...</span></span><br><span class="line"><span class="string">debconf: unable to initialize frontend: Dialog</span></span><br><span class="line"><span class="string">debconf: (TERM is not set, so the dialog frontend is not usable.)</span></span><br><span class="line"><span class="string">debconf: falling back to frontend: Readline</span></span><br><span class="line"><span class="string">debconf: unable to initialize frontend: Readline</span></span><br><span class="line"><span class="string">debconf: (Can'</span>t locate Term/ReadLine.pm <span class="keyword">in</span> @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/<span class="built_in">local</span>/lib/x86_64-linux-gnu/perl/5.26.1 /usr/<span class="built_in">local</span>/share/perl/5.26.1 /usr/lib/x86_64-linux-gnu/perl5/5.26 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.26 /usr/share/perl/5.26 /usr/<span class="built_in">local</span>/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)</span><br><span class="line">debconf: falling back to frontend: Teletype</span><br><span class="line">Setting up libxml2:amd64 (2.9.4+dfsg1-6.1ubuntu1.2) ...</span><br><span class="line">Setting up libfreetype6:amd64 (2.8.1-2ubuntu2) ...</span><br><span class="line">Setting up libxslt1.1:amd64 (1.1.29-5) ...</span><br><span class="line">Processing triggers <span class="keyword">for</span> libc-bin (2.27-3ubuntu1) ...</span><br><span class="line">Setting up libatm1:amd64 (1:2.5.1-2build1) ...</span><br><span class="line">Setting up libxtables12:amd64 (1.6.1-2ubuntu2) ...</span><br><span class="line">Setting up libssl1.1:amd64 (1.1.0g-2ubuntu4.3) ...</span><br><span class="line">debconf: unable to initialize frontend: Dialog</span><br><span class="line">debconf: (TERM is not <span class="built_in">set</span>, so the dialog frontend is not usable.)</span><br><span class="line">debconf: falling back to frontend: Readline</span><br><span class="line">debconf: unable to initialize frontend: Readline</span><br><span class="line">debconf: (Can<span class="string">'t locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.26.1 /usr/local/share/perl/5.26.1 /usr/lib/x86_64-linux-gnu/perl5/5.26 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.26 /usr/share/perl/5.26 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)</span></span><br><span class="line"><span class="string">debconf: falling back to frontend: Teletype</span></span><br><span class="line"><span class="string">Setting up libnginx-mod-mail (1.14.0-0ubuntu1.2) ...</span></span><br><span class="line"><span class="string">Setting up libnginx-mod-http-xslt-filter (1.14.0-0ubuntu1.2) ...</span></span><br><span class="line"><span class="string">Setting up libxdmcp6:amd64 (1:1.1.2-3) ...</span></span><br><span class="line"><span class="string">Setting up libmnl0:amd64 (1.0.4-2) ...</span></span><br><span class="line"><span class="string">Setting up libnginx-mod-http-geoip (1.14.0-0ubuntu1.2) ...</span></span><br><span class="line"><span class="string">Setting up libx11-data (2:1.6.4-3ubuntu0.1) ...</span></span><br><span class="line"><span class="string">Setting up libxau6:amd64 (1:1.0.8-1) ...</span></span><br><span class="line"><span class="string">Setting up libwebp6:amd64 (0.6.1-2) ...</span></span><br><span class="line"><span class="string">Setting up libjpeg8:amd64 (8c-2ubuntu8) ...</span></span><br><span class="line"><span class="string">Setting up fontconfig-config (2.12.6-0ubuntu2) ...</span></span><br><span class="line"><span class="string">Setting up libnginx-mod-stream (1.14.0-0ubuntu1.2) ...</span></span><br><span class="line"><span class="string">Setting up libtiff5:amd64 (4.0.9-5) ...</span></span><br><span class="line"><span class="string">Setting up iproute2 (4.15.0-2ubuntu1) ...</span></span><br><span class="line"><span class="string">Setting up libxcb1:amd64 (1.13-1) ...</span></span><br><span class="line"><span class="string">Setting up libfontconfig1:amd64 (2.12.6-0ubuntu2) ...</span></span><br><span class="line"><span class="string">Setting up libx11-6:amd64 (2:1.6.4-3ubuntu0.1) ...</span></span><br><span class="line"><span class="string">Setting up libxpm4:amd64 (1:3.5.12-1) ...</span></span><br><span class="line"><span class="string">Setting up libgd3:amd64 (2.2.5-4ubuntu0.2) ...</span></span><br><span class="line"><span class="string">Setting up libnginx-mod-http-image-filter (1.14.0-0ubuntu1.2) ...</span></span><br><span class="line"><span class="string">Setting up nginx-core (1.14.0-0ubuntu1.2) ...</span></span><br><span class="line"><span class="string">invoke-rc.d: could not determine current runlevel</span></span><br><span class="line"><span class="string">invoke-rc.d: policy-rc.d denied execution of start.</span></span><br><span class="line"><span class="string">Setting up nginx (1.14.0-0ubuntu1.2) ...</span></span><br><span class="line"><span class="string">Processing triggers for libc-bin (2.27-3ubuntu1) ...</span></span><br><span class="line"><span class="string">Removing intermediate container ae04d4b93edb</span></span><br><span class="line"><span class="string"> ---&gt; b46e9e709105</span></span><br><span class="line"><span class="string">Step 5/5 : CMD [“echo”,”Image created”]</span></span><br><span class="line"><span class="string"> ---&gt; Running in 8cb15a77b4a6</span></span><br><span class="line"><span class="string">Removing intermediate container 8cb15a77b4a6</span></span><br><span class="line"><span class="string"> ---&gt; b09b0ff6c900</span></span><br><span class="line"><span class="string">Successfully built b09b0ff6c900</span></span><br><span class="line"><span class="string">Successfully tagged testimage:001</span></span><br></pre></td></tr></table></figure>
+<h2 id="Check-out"><a href="#Check-out" class="headerlink" title="Check out"></a>Check out</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker images </span><br><span class="line">REPOSITORY                      TAG                 IMAGE ID            CREATED              SIZE</span><br><span class="line">testimage                       001                 b09b0ff6c900        About a minute ago   171MB</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://www.tutorialspoint.com/docker/docker_quick_guide.htm" target="_blank" rel="noopener">Docker Guide</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i>
+
+ docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/push-image-to-DockerHub.html" rel="prev" title="Push image to DockerHub">
+                <i class="fa fa-chevron-left"></i> Push image to DockerHub
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/docker-container.html" rel="next" title="docker-container commands and its architecture">
+                docker-container commands and its architecture <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/europe-man.jpg" alt="Leopold.Seagal">
+            
+              <p class="site-author-name" itemprop="name">Leopold.Seagal</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Leopold-Sun" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:markyeap@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("12/20/2018 15:13:14");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="Age:"+daysold+" D "+hrsold+" H "+minsold+" M "+seconds+" S ";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Creat-and-configure-Dockerfile"><span class="nav-number">1.</span> <span class="nav-text">Creat and configure Dockerfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Build-image"><span class="nav-number">2.</span> <span class="nav-text">Build image</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Used-command"><span class="nav-number">2.1.</span> <span class="nav-text">Used command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Return-value"><span class="nav-number">2.2.</span> <span class="nav-text">Return value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-out"><span class="nav-number">2.3.</span> <span class="nav-text">Check out</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leopold.Seagal</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
