@@ -2,7 +2,7 @@
 title: front proxy route policy
 tags: [Envoy]
 categories: [Envoy]
-date: 2019-01-14 13:27:58
+date: 2019-01-17 13:27:58
 ---
 
 # KubeCon Abstract
