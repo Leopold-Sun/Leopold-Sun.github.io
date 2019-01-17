@@ -1,0 +1,77 @@
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 0;
+  z-index: $zindex-4;
+  box-shadow: inset 0 2px 6px black;
+  background: $black-deep;
+  -webkit-transform: translateZ(0); // http://stackoverflow.com/questions/17079857/position-fixed-broken-in-chrome-with-flash-behind
+
+  a {
+    color: $grey-dark;
+    border-bottom-color: $black-light;
+    &:hover { color: $gainsboro; }
+  }
+
+  +tablet() {
+    hide() if not hexo-config('sidebar.onmobile');
+  }
+  +mobile() {
+    hide() if not hexo-config('sidebar.onmobile');
+  }
+
+}
+
+.sidebar-inner {
+  position: relative;
+  padding: 20px 10px;
+  color: $grey-dark;
+  text-align: center;
+}
+
+.site-overview-wrap {
+  overflow: hidden;
+}
+
+.site-overview {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@import "sidebar-toggle";
+@import "sidebar-author";
+@import "site-state";
+@import "sidebar-feed-link";
+@import "sidebar-author-links";
+@import "sidebar-blogroll";
+@import "sidebar-nav";
+@import "sidebar-toc";
+@import "sidebar-dimmer" if hexo-config('sidebar.onmobile');
+
+.site-author-image {
+  display: block;
+  margin: 0 auto;
+  padding: $site-author-image-padding;
+  max-width: $site-author-image-width;
+  height: $site-author-image-height;
+  border: site-author-image-border-color;
+  /* start*/
+  border-radius: 50%
+  webkit-transition: 1.4s all;
+  moz-transition: 1.4s all;
+  ms-transition: 1.4s all;
+  transition: 1.4s all;
+  /* end */
+}
+/* start */
+.site-author-image:hover {
+  background-color: #55DAE1;
+  webkit-transform: rotate(360deg) scale(1.1);
+  moz-transform: rotate(360deg) scale(1.1);
+  ms-transform: rotate(360deg) scale(1.1);
+  transform: rotate(360deg) scale(1.1);
+}
+/* end */
