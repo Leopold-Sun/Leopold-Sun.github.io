@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2018/12/12/Difference_of_I_and_D_caches/">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/14/pat-1013-1014-1015-1016/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leopold.Seagal">
@@ -335,7 +335,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/12/Difference_of_I_and_D_caches/" itemprop="url">Differences between I & D - cache</a></h2>
+                <a class="post-title-link" href="/2019/01/14/pat-1013-1014-1015-1016/" itemprop="url">pat-1013-1014-1015-1016</a></h2>
         
 
         <div class="post-meta">
@@ -347,8 +347,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-12T21:25:00+08:00">
-                2018-12-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T15:05:37+08:00">
+                2019-01-14
               </time>
             
 
@@ -370,8 +370,19 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hardware-Architecture/" itemprop="url" rel="index">
-                    <span itemprop="name">Hardware Architecture</span>
+                  <a href="/categories/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CPP/PAT/" itemprop="url" rel="index">
+                    <span itemprop="name">PAT</span>
                   </a>
                 </span>
 
@@ -429,15 +440,11 @@
 
       
         
-          <h3 id="Preliminaries"><a href="#Preliminaries" class="headerlink" title="Preliminaries"></a>Preliminaries</h3><h4 id="L1-and-L2-cache"><a href="#L1-and-L2-cache" class="headerlink" title="L1 and L2 cache"></a>L1 and L2 cache</h4><blockquote>
-<p>From <a href="https://www.webopedia.com/" target="_blank" rel="noopener">Webopedia</a><br>L1、L2 cache are memory caches using high speed SRAM<br><em>Some memory caches are built into the architecture of microprocessors. The Intel 80486 microprocessor contains an 8K memory cache, and the Pentium has a 16K cache. Such internal caches are often called Level 1 (L1) caches. Most modern PCs also come with external cache memory, called Level 2 (L2) caches. These caches sit between the CPU and the DRAM. Like L1 caches, L2 caches are composed of SRAM but they are much larger.</em></p>
-</blockquote>
-<blockquote>
-<p>From <a href="https://en.wikipedia.org/wiki/" target="_blank" rel="noopener">Wikipedia</a><br><em>A CPU cache is a hardware cache used by the central processing unit (CPU) of a computer to reduce the average cost (time or energy) to access data from the main memory. A cache is a smaller, faster memory, closer to a processor core, which stores copies of the data from frequently used main memory locations. Most CPUs have different independent caches, including instruction and data caches, where the data cache is usually organized as a hierarchy of more cache levels (L1, L2, L3, L4, etc.). Almost all current CPUs with caches have a split L1 cache. They also have L2 caches and, for larger processors, L3 caches as well. The L2 cache is usually not split and acts as a common repository for the already split L1 cache. Every core of a multi-core processor has a dedicated L2 cache and is usually not shared between the cores. The L3 cache, and higher-level caches, are shared between the cores and are not split.</em></p>
-</blockquote>
+          <h1 id="1013"><a href="#1013" class="headerlink" title="1013"></a>1013</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p><a href="https://pintia.cn/problem-sets/994805260223102976/problems/994805309963354112" target="_blank" rel="noopener">数素数</a></p>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> primeNum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> prime[<span class="number">100001</span>];<span class="comment">//素数表 </span></span><br><span class="line"><span class="keyword">int</span> flag[<span class="number">100001</span>] = &#123; <span class="number">0</span> &#125;;<span class="comment">//用来筛选 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">primeTable</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= n;i++) &#123;<span class="comment">//从2开始检测 </span></span><br><span class="line">		<span class="keyword">if</span> (flag[i] == <span class="number">0</span>) &#123;</span><br><span class="line">			prime[primeNum++] = i;<span class="comment">//如果是素数则加入素数表 </span></span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + i;j &lt;= n;j += i) &#123;<span class="comment">//从这个数开始的所有它的倍数都不是素数 </span></span><br><span class="line">				flag[j] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> m = <span class="number">0</span>, n = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	primeTable(<span class="number">100001</span>);</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = m - <span class="number">1</span>;i &lt;n - <span class="number">1</span>;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> ((cnt % <span class="number">10</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; prime[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; prime[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		cnt++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; prime[n - <span class="number">1</span>];</span><br><span class="line">	<span class="comment">//system("pause");</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/12/Difference_of_I_and_D_caches/" rel="contents">
+            <a class="btn" href="/2019/01/14/pat-1013-1014-1015-1016/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -488,7 +495,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2018/12/12/Shared_lib/">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/14/pat-1009-1010-1011-1012/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leopold.Seagal">
@@ -507,7 +514,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/12/Shared_lib/" itemprop="url">How to compile shared library</a></h2>
+                <a class="post-title-link" href="/2019/01/14/pat-1009-1010-1011-1012/" itemprop="url">pat-1009-1010-1011-1012</a></h2>
         
 
         <div class="post-meta">
@@ -519,8 +526,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-12T14:02:00+08:00">
-                2018-12-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T15:01:03+08:00">
+                2019-01-14
               </time>
             
 
@@ -542,8 +549,19 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Shared-Library/" itemprop="url" rel="index">
-                    <span itemprop="name">Shared Library</span>
+                  <a href="/categories/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CPP/PAT/" itemprop="url" rel="index">
+                    <span itemprop="name">PAT</span>
                   </a>
                 </span>
 
@@ -601,14 +619,11 @@
 
       
         
-          <ul>
-<li><code>gcc -fPIC -shared ${target source file}.c -o ${target name}.so</code></li>
-</ul>
-<p>生成.so文件，其中，命令中 </p>
-<p>-shared该选项指定生成动态连接库（让连接器生成T类型的导出符号表，有时候也生成弱连<br>接W类型的导出符号），不用该标志外部程序无法连接。相当于一个可执行文件<br>-fPIC：表示编译为位置独立的代码，不用此选项的话编译后的代码是位置相关的所以动态<font color="#729FCF">&gt;</font>载入时是通过代码拷贝的方式来满足不同进程的需要，而不能达到真正代码段共享的目的。</p>
+          <h1 id="1009"><a href="#1009" class="headerlink" title="1009"></a>1009</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p><a href="https://pintia.cn/problem-sets/994805260223102976/problems/994805314941992960" target="_blank" rel="noopener">说反话</a></p>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n = str.length();</span><br><span class="line">	<span class="keyword">if</span> (str.find_last_of(<span class="string">" "</span>) == <span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; str;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> pos = str.find_last_of(<span class="string">" "</span>);</span><br><span class="line">		<span class="built_in">string</span> temp = str.substr(pos + <span class="number">1</span>, n - <span class="number">1</span> - pos );</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; temp &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">		str.erase(pos, n - pos);</span><br><span class="line">		reverse(str);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> str;</span><br><span class="line">	getline(<span class="built_in">cin</span>, str);</span><br><span class="line">	reverse(str);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/12/Shared_lib/" rel="contents">
+            <a class="btn" href="/2019/01/14/pat-1009-1010-1011-1012/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -659,7 +674,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2018/12/11/Unsupported_nic_of_dpdk/">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/14/pat-1005-1006-1007-1008/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leopold.Seagal">
@@ -678,7 +693,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/11/Unsupported_nic_of_dpdk/" itemprop="url">How to know that your nic is supported by dpdk or not</a></h2>
+                <a class="post-title-link" href="/2019/01/14/pat-1005-1006-1007-1008/" itemprop="url">pat-1005-1006-1007-1008</a></h2>
         
 
         <div class="post-meta">
@@ -690,8 +705,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-11T16:55:00+08:00">
-                2018-12-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T14:55:12+08:00">
+                2019-01-14
               </time>
             
 
@@ -713,8 +728,19 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/VPP/" itemprop="url" rel="index">
-                    <span itemprop="name">VPP</span>
+                  <a href="/categories/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CPP/PAT/" itemprop="url" rel="index">
+                    <span itemprop="name">PAT</span>
                   </a>
                 </span>
 
@@ -772,21 +798,11 @@
 
       
         
-          <ul>
-<li>Preliminary</li>
-</ul>
-<blockquote>
-<p>If you are not sure whether the nic is supported by dpdk, just assume it is and use normal instructions to bind it to dpdk.</p>
-</blockquote>
-<ul>
-<li>Try to bind</li>
-</ul>
-<blockquote>
-<p><code>dpdk-devbind.py -s</code><br>If have decided which one driver is supposed to be used (uio-pci-generic , igb-uio or vfio-pci), just disconnect the nic physically and bind it<br><code>sudo dpdk-dvebind.py -b ${driver name} ${nic pci number}</code><br>If this instruction goes wrong, perhaps the needed module is not be inserted or moduled<br><code>modprobe vfio-pci</code><br><code>insmod ${path}/igb_uio.ko</code></p>
-</blockquote>
+          <h1 id="1005"><a href="#1005" class="headerlink" title="1005"></a>1005</h1><h2 id="Porblem"><a href="#Porblem" class="headerlink" title="Porblem"></a>Porblem</h2><p><a href="https://pintia.cn/problem-sets/994805260223102976/problems/994805320306507776" target="_blank" rel="noopener">继续(3n+1)猜想</a></p>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">computeCriNum</span><span class="params">(<span class="keyword">int</span> inputNum[],<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">bool</span> semNum[<span class="number">10000</span>];</span><br><span class="line">	<span class="built_in">memset</span>(semNum, <span class="literal">false</span>, <span class="keyword">sizeof</span>(semNum));</span><br><span class="line">	<span class="keyword">int</span> tempOfNum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i) &#123;</span><br><span class="line">		tempOfNum = inputNum[i];</span><br><span class="line">		<span class="keyword">if</span> (semNum[tempOfNum] == <span class="literal">false</span>) &#123;</span><br><span class="line">			<span class="keyword">while</span> (tempOfNum != <span class="number">1</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> ((tempOfNum &amp; <span class="number">1</span>) == <span class="number">1</span>)   <span class="comment">//判断奇偶数：i &amp; 1 == 1 =&gt; i is odd;i &amp; 1 == 0 =&gt; i is even.</span></span><br><span class="line">					tempOfNum = (<span class="number">3</span> * tempOfNum + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">				<span class="keyword">else</span> </span><br><span class="line">					tempOfNum = tempOfNum / <span class="number">2</span>;</span><br><span class="line">				semNum[tempOfNum] = <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(inputNum, inputNum + n);</span><br><span class="line">	<span class="keyword">int</span> numOfCriNums = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (semNum[inputNum[i]] == <span class="literal">false</span>) &#123;</span><br><span class="line">			numOfCriNums++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i =n - <span class="number">1</span>;i &gt;= <span class="number">0</span>;i--) &#123;</span><br><span class="line">		<span class="keyword">if</span> (semNum[inputNum[i]] == <span class="literal">false</span> ) &#123;</span><br><span class="line">			<span class="keyword">if</span> (numOfCriNums &gt; <span class="number">1</span>) </span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; inputNum[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; inputNum[i];</span><br><span class="line">			numOfCriNums--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> numOfInputNum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> inputNum[<span class="number">101</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; numOfInputNum;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; numOfInputNum;++i) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; inputNum[i];</span><br><span class="line">	&#125;</span><br><span class="line">	computeCriNum(inputNum,numOfInputNum);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/11/Unsupported_nic_of_dpdk/" rel="contents">
+            <a class="btn" href="/2019/01/14/pat-1005-1006-1007-1008/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -837,7 +853,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2018/12/10/Configure_NIC_VPP_using_DPDK/">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/14/pat-1001-1002-1003-1004/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leopold.Seagal">
@@ -856,7 +872,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/10/Configure_NIC_VPP_using_DPDK/" itemprop="url">Configure ethernet to vpp instance using dpdk</a></h2>
+                <a class="post-title-link" href="/2019/01/14/pat-1001-1002-1003-1004/" itemprop="url">PAtest 1001+1002+1003+1004</a></h2>
         
 
         <div class="post-meta">
@@ -868,8 +884,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-10T17:08:00+08:00">
-                2018-12-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T14:41:41+08:00">
+                2019-01-14
               </time>
             
 
@@ -891,8 +907,19 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/VPP/" itemprop="url" rel="index">
-                    <span itemprop="name">VPP</span>
+                  <a href="/categories/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CPP/PAT/" itemprop="url" rel="index">
+                    <span itemprop="name">PAT</span>
                   </a>
                 </span>
 
@@ -935,10 +962,6 @@
           
 
           
-              <div class="post-description">
-                  Let dpdk drive the ethernet and be used by vpp instances.
-              </div>
-          
 
         </div>
       </header>
@@ -954,31 +977,12 @@
 
       
         
-          <h3 id="Preliminaries"><a href="#Preliminaries" class="headerlink" title="Preliminaries"></a>Preliminaries</h3><ul>
-<li><p>Pull vpp from github</p>
-<blockquote>
-<p><code>git remote add origin https://gerrit.fd.io/r/vpp</code><br><code>git pull origin master</code></p>
-</blockquote>
-</li>
-<li><p>Make and install dependencies under <em>root</em></p>
-<blockquote>
-<p><code>make install-dep</code><br><code>make build</code> or <code>make build-release</code> <em>make build for debugging</em><br><code>make pkg-deb</code><br><code>dpdkg -i build-root/*.deb</code></p>
-</blockquote>
-</li>
-<li><p>DPDK installed</p>
-<blockquote>
-<p>Or you can use dpdk-devbind.py from “build-root/install-vpp_debug-native/external/share/dpdk/usertools”<br><code>cp dpdk-devbind.py /usr/bin</code> <em>use this instruction to make it easy-used</em></p>
-</blockquote>
-</li>
-<li><p>Grub information</p>
-<blockquote>
-<p><code>sudo vim /etc/default/grub</code> to configure <em>GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash default_hugepagesz=1G hugepagesz=1G hugepages=4 iommu=pt intel_iommu=on”</em><br><code>sudo update-grub</code><br><code>reboot</code><br>reboot your machine to make the grub configuration valid<br><code>cat /proc/cmdline</code> to check again</p>
-</blockquote>
-</li>
-</ul>
+          <p><a href="https://pintia.cn/problem-sets/994805260223102976/problems" target="_blank" rel="noopener">PAtest 乙级</a></p>
+<h1 id="1001"><a href="#1001" class="headerlink" title="1001"></a>1001</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p><a href="https://pintia.cn/problem-sets/994805260223102976/problems/994805325918486528" target="_blank" rel="noopener">害死人不偿命的(3n+1)猜想</a></p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> input = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt;input;</span><br><span class="line">  <span class="keyword">while</span>(input != <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(input%<span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">      input /= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      input=(<span class="number">3</span>*input + <span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cnt++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;cnt;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/10/Configure_NIC_VPP_using_DPDK/" rel="contents">
+            <a class="btn" href="/2019/01/14/pat-1001-1002-1003-1004/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1029,7 +1033,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2018/12/10/Netperf_to_vpp/">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/14/front-proxy-route-policy/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leopold.Seagal">
@@ -1048,7 +1052,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/10/Netperf_to_vpp/" itemprop="url">Using netperf to test vpp performance</a></h2>
+                <a class="post-title-link" href="/2019/01/14/front-proxy-route-policy/" itemprop="url">front proxy route policy</a></h2>
         
 
         <div class="post-meta">
@@ -1060,8 +1064,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-10T00:00:00+08:00">
-                2018-12-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T13:27:58+08:00">
+                2019-01-14
               </time>
             
 
@@ -1083,8 +1087,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/VPP/" itemprop="url" rel="index">
-                    <span itemprop="name">VPP</span>
+                  <a href="/categories/Envoy/" itemprop="url" rel="index">
+                    <span itemprop="name">Envoy</span>
                   </a>
                 </span>
 
@@ -1142,15 +1146,10 @@
 
       
         
-          <ul>
-<li>References<blockquote>
-<p><a href="https://www.cnblogs.com/winifred-tang94/p/5877662.html" target="_blank" rel="noopener">https://www.cnblogs.com/winifred-tang94/p/5877662.html</a></p>
-</blockquote>
-</li>
-</ul>
+          <h1 id="KubeCon-Abstract"><a href="#KubeCon-Abstract" class="headerlink" title="KubeCon Abstract"></a>KubeCon Abstract</h1><p>Front Proxy is a representative sandbox of Envoy service mesh. The routing policy of Envoy proxy will inevitably limit the forwarding rate of packets when the number of services it serves grows to be large such as 200. Guoao Sun will review the common routing policy of envoy proxy, discuss one crucial factor interfering its performance, and propose one optimization method to address this challenge.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/10/Netperf_to_vpp/" rel="contents">
+            <a class="btn" href="/2019/01/14/front-proxy-route-policy/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1192,7 +1191,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1241,7 +1240,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1252,7 +1251,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -1263,7 +1262,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1348,7 +1347,7 @@ show_date_time();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

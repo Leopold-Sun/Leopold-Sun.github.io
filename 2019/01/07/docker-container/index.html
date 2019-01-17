@@ -89,7 +89,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="docker,">
 
 
 
@@ -100,16 +100,22 @@
 
 
 
-<meta name="description" content="朝闻道，夕死可矣">
-<meta property="og:type" content="website">
-<meta property="og:title" content="INFINITE">
-<meta property="og:url" content="https://leopold-sun.com/tags/blog/index.html">
+<meta name="description" content="Docker ContainerThe instances of Docker Images are containers which could be runned via run command and reveals the basic purpose of Docker. Running a container and listing containersUsing it to run d">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-container commands and its architecture">
+<meta property="og:url" content="https://leopold-sun.com/2019/01/07/docker-container/index.html">
 <meta property="og:site_name" content="INFINITE">
-<meta property="og:description" content="朝闻道，夕死可矣">
+<meta property="og:description" content="Docker ContainerThe instances of Docker Images are containers which could be runned via run command and reveals the basic purpose of Docker. Running a container and listing containersUsing it to run d">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://leopold-sun.com/images/docker/container-lifecycle.jpg">
+<meta property="og:image" content="https://leopold-sun.com/images/docker/architecture.jpg">
+<meta property="og:image" content="https://leopold-sun.com/images/docker/architecture-docker.jpg">
+<meta property="og:updated_time" content="2019-01-07T06:22:16.851Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="INFINITE">
-<meta name="twitter:description" content="朝闻道，夕死可矣">
+<meta name="twitter:title" content="docker-container commands and its architecture">
+<meta name="twitter:description" content="Docker ContainerThe instances of Docker Images are containers which could be runned via run command and reveals the basic purpose of Docker. Running a container and listing containersUsing it to run d">
+<meta name="twitter:image" content="https://leopold-sun.com/images/docker/container-lifecycle.jpg">
 
 
 
@@ -139,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="https://leopold-sun.com/tags/blog/">
+  <link rel="canonical" href="https://leopold-sun.com/2019/01/07/docker-container/">
 
 
 
 
 
-  <title>Tag: blog | INFINITE</title>
+  <title>docker-container commands and its architecture | INFINITE</title>
   
 
 
@@ -165,7 +171,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -301,52 +307,246 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>blog<small>Tag</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/07/docker-container/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leopold.Seagal">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/europe-man.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="INFINITE">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/12/09/Git-to-upload-blogs/" itemprop="url">
-              
-                <span itemprop="name">Using git to upload your blogs</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">docker-container commands and its architecture</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-09T00:00:00+08:00" content="2018-12-09">
-          12-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-07T13:51:59+08:00">
+                2019-01-07
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Docker-Container"><a href="#Docker-Container" class="headerlink" title="Docker Container"></a>Docker Container</h1><p>The instances of Docker Images are containers which could be runned via <code>run</code> command and reveals the basic purpose of Docker.</p>
+<h2 id="Running-a-container-and-listing-containers"><a href="#Running-a-container-and-listing-containers" class="headerlink" title="Running a container and listing containers"></a>Running a container and listing containers</h2><p>Using <code>it</code> to run docker containers in an interactive mode.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run –it &#123;image name or ID&#125; /bin/bash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Because <code>exit</code> will just kill the borned container.,you can use <code>Ctrl+P+Q</code> to exit the interactive shell with the contianer reserved. </p>
+</blockquote>
+<blockquote>
+<p><code>nsenter</code> command could achieve the very same thing.——<a href="https://hub.docker.com/r/jpetazzo/nsenter/dockerfile/" target="_blank" rel="noopener">nsenter</a></p>
+</blockquote>
+<p>Using <code>ps</code> command to list docker containers</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker ps</span><br><span class="line">$ sudo docker ps -a	<span class="comment"># returns all of the containers on the system.</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Command-history-of-an-image"><a href="#Command-history-of-an-image" class="headerlink" title="Command history of an image"></a>Command history of an image</h2><blockquote>
+<p>The above command will show all the commands that were run against the <strong>74b2f51293f9</strong> image.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker images </span><br><span class="line">REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">envoyproxy/envoy-build-ubuntu   my_tag              74b2f51293f9        3 days ago          3.12GB</span><br><span class="line">hello-world                     latest              fce289e99eb9        6 days ago          1.84kB</span><br><span class="line">ubuntu                          xenial              b0ef3016420a        9 days ago          117MB</span><br><span class="line"></span><br><span class="line">$ sudo docker <span class="built_in">history</span> 74b2f51293f9</span><br><span class="line">IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT</span><br><span class="line">74b2f51293f9        3 days ago          /bin/sh -c ./build_container_ubuntu.sh          3GB                 </span><br><span class="line">7e9dc826f07e        3 days ago          /bin/sh -c <span class="comment">#(nop) COPY file:9326d4a60f409f2a…   1.16kB              </span></span><br><span class="line">aa8519dc1d46        3 days ago          /bin/sh -c <span class="comment">#(nop) COPY multi:bb2b042aef38ecd…   10kB                </span></span><br><span class="line">2909d73adcf9        3 days ago          /bin/sh -c <span class="comment">#(nop) COPY dir:ad387371ef9352f92…   119kB               </span></span><br><span class="line">f6d5365aeac1        3 days ago          /bin/sh -c <span class="comment">#(nop) COPY dir:b71e9522a30046ee6…   1.06MB              </span></span><br><span class="line">e7568c3b205d        3 days ago          /bin/sh -c <span class="comment">#(nop) COPY file:60d95c86360ded7b…   432B                </span></span><br><span class="line">c80abb178eef        3 days ago          /bin/sh -c <span class="comment">#(nop) COPY multi:681cbdd7f492ada…   5.15kB              </span></span><br><span class="line">b0ef3016420a        9 days ago          /bin/sh -c <span class="comment">#(nop)  CMD ["/bin/bash"]            0B                  </span></span><br><span class="line">&lt;missing&gt;           9 days ago          /bin/sh -c mkdir -p /run/systemd &amp;&amp; <span class="built_in">echo</span> <span class="string">'do…   7B                  </span></span><br><span class="line"><span class="string">&lt;missing&gt;           9 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*          0B                  </span></span><br><span class="line"><span class="string">&lt;missing&gt;           9 days ago          /bin/sh -c set -xe   &amp;&amp; echo '</span><span class="comment">#!/bin/sh' &gt; /…   745B                </span></span><br><span class="line">&lt;missing&gt;           9 days ago          /bin/sh -c <span class="comment">#(nop) ADD file:7f95be7c8278786d5…   117MB</span></span><br></pre></td></tr></table></figure>
+<h2 id="Docker-Top"><a href="#Docker-Top" class="headerlink" title="Docker Top"></a>Docker Top</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker ps	<span class="comment"># list running containers.</span></span><br><span class="line">$ sudo docker top &#123;ContainerID&#125;	<span class="comment"># this command is similar to linux top.</span></span><br></pre></td></tr></table></figure>
+<h2 id="Docker-stop-to-stop-a-running-container"><a href="#Docker-stop-to-stop-a-running-container" class="headerlink" title="Docker stop to stop a running container"></a>Docker stop to stop a running container</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker stop &#123;containerID&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Docker-rm-to-delete-a-container"><a href="#Docker-rm-to-delete-a-container" class="headerlink" title="Docker rm to delete a container"></a>Docker rm to delete a container</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker rm &#123;containerID&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Docker-stats-to-show-statistics-of-a-running-container"><a href="#Docker-stats-to-show-statistics-of-a-running-container" class="headerlink" title="Docker stats to show statistics of a running container"></a>Docker stats to show statistics of a running container</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker stats &#123;containerID&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Docker-attach-to-attach-to-a-running-container"><a href="#Docker-attach-to-attach-to-a-running-container" class="headerlink" title="Docker attach to attach to a running container"></a>Docker attach to attach to a running container</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker attach ContainerID</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Once you have attached to the Docker container, you can run the above command to see the process utilization in that Docker container. <a href="Once you have attached to the Docker container, you can run the above command to see the process utilization in that Docker container.">docker guide</a></p>
+</blockquote>
+<h2 id="docker-pause-unpause-kill-to-pause-unpause-kill-the-preccesses-in-a-running-container"><a href="#docker-pause-unpause-kill-to-pause-unpause-kill-the-preccesses-in-a-running-container" class="headerlink" title="docker pause/unpause/kill to pause/unpause/kill the preccesses in a running container"></a>docker pause/unpause/kill to pause/unpause/kill the preccesses in a running container</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker pause/unpause/<span class="built_in">kill</span> &#123;containerID&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Docker-Container-Lifecycle"><a href="#Docker-Container-Lifecycle" class="headerlink" title="Docker-Container Lifecycle"></a>Docker-Container Lifecycle</h2><p><img src="/images/docker/container-lifecycle.jpg" alt=""></p>
+<ul>
+<li>Initially, the Docker container will be in the created state.</li>
+<li>Then the Docker container goes into the running state when the Docker run command is used.</li>
+<li>The Docker kill command is used to kill an existing Docker container.</li>
+<li>The Docker pause command is used to pause an existing Docker container.</li>
+<li>The Docker stop command is used to pause an existing Docker container.</li>
+<li>The Docker run command is used to put a container back from a stopped state to a running state.</li>
+</ul>
+<h2 id="Docker-Architecture"><a href="#Docker-Architecture" class="headerlink" title="Docker Architecture"></a>Docker Architecture</h2><h3 id="Tarditional-and-standard-architecture-of-virtualization"><a href="#Tarditional-and-standard-architecture-of-virtualization" class="headerlink" title="Tarditional and standard architecture of virtualization"></a>Tarditional and standard architecture of virtualization</h3><p><img src="/images/docker/architecture.jpg" alt=""></p>
+<ul>
+<li>The server is the physical server that is used to host multiple virtual machines.</li>
+<li>The Host OS is the base machine such as Linux or Windows.</li>
+<li>The Hypervisor is either VMWare or Windows Hyper V that is used to host virtual machines.</li>
+<li>You would then install multiple operating systems as virtual machines on top of the existing hypervisor as Guest OS.</li>
+<li>You would then host your applications on top of each Guest OS.</li>
+</ul>
+<h3 id="New-generation-of-virtualization-that-is-enabled-via-Dockers"><a href="#New-generation-of-virtualization-that-is-enabled-via-Dockers" class="headerlink" title="New generation of virtualization that is enabled via Dockers"></a>New generation of virtualization that is enabled via Dockers</h3><p><img src="/images/docker/architecture-docker.jpg" alt=""></p>
+<ul>
+<li>The server is the physical server that is used to host multiple virtual machines. So this layer remains the same.</li>
+<li>The Host OS is the base machine such as Linux or Windows. So this layer remains the same.</li>
+<li>Now comes the new generation which is the Docker engine. This is used to run the operating system which earlier used to be virtual machines as Docker containers.</li>
+<li>All of the Apps now run as Docker containers.</li>
+</ul>
+<hr>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://www.tutorialspoint.com/docker/docker_quick_guide.htm" target="_blank" rel="noopener">Docker Guide</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i>
+
+ docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/07/build-a-docker-image/" rel="prev" title="build a docker image">
+                <i class="fa fa-chevron-left"></i> build a docker image
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/07/docker-image/" rel="next" title="docker-image">
+                docker-image <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -354,6 +554,10 @@
 
 
           
+
+  
+  
+
 
 
         </div>
@@ -375,8 +579,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -393,7 +606,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -404,7 +617,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -415,7 +628,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -480,6 +693,22 @@ show_date_time();
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Container"><span class="nav-number">1.</span> <span class="nav-text">Docker Container</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Running-a-container-and-listing-containers"><span class="nav-number">1.1.</span> <span class="nav-text">Running a container and listing containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-history-of-an-image"><span class="nav-number">1.2.</span> <span class="nav-text">Command history of an image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Top"><span class="nav-number">1.3.</span> <span class="nav-text">Docker Top</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-stop-to-stop-a-running-container"><span class="nav-number">1.4.</span> <span class="nav-text">Docker stop to stop a running container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-rm-to-delete-a-container"><span class="nav-number">1.5.</span> <span class="nav-text">Docker rm to delete a container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-stats-to-show-statistics-of-a-running-container"><span class="nav-number">1.6.</span> <span class="nav-text">Docker stats to show statistics of a running container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-attach-to-attach-to-a-running-container"><span class="nav-number">1.7.</span> <span class="nav-text">Docker attach to attach to a running container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-pause-unpause-kill-to-pause-unpause-kill-the-preccesses-in-a-running-container"><span class="nav-number">1.8.</span> <span class="nav-text">docker pause/unpause/kill to pause/unpause/kill the preccesses in a running container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Container-Lifecycle"><span class="nav-number">1.9.</span> <span class="nav-text">Docker-Container Lifecycle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Architecture"><span class="nav-number">1.10.</span> <span class="nav-text">Docker Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tarditional-and-standard-architecture-of-virtualization"><span class="nav-number">1.10.1.</span> <span class="nav-text">Tarditional and standard architecture of virtualization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#New-generation-of-virtualization-that-is-enabled-via-Dockers"><span class="nav-number">1.10.2.</span> <span class="nav-text">New generation of virtualization that is enabled via Dockers</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -500,7 +729,7 @@ show_date_time();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -610,6 +839,10 @@ show_date_time();
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

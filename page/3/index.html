@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2018/12/09/Git-to-upload-blogs/">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/10/envoy-front-proxy-sandbox/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leopold.Seagal">
@@ -335,7 +335,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/09/Git-to-upload-blogs/" itemprop="url">Using git to upload your blogs</a></h2>
+                <a class="post-title-link" href="/2019/01/10/envoy-front-proxy-sandbox/" itemprop="url">envoy: front-proxy sandbox</a></h2>
         
 
         <div class="post-meta">
@@ -347,8 +347,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-09T00:00:00+08:00">
-                2018-12-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-10T13:51:10+08:00">
+                2019-01-10
               </time>
             
 
@@ -370,8 +370,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Blog/" itemprop="url" rel="index">
-                    <span itemprop="name">Blog</span>
+                  <a href="/categories/Envoy/" itemprop="url" rel="index">
+                    <span itemprop="name">Envoy</span>
                   </a>
                 </span>
 
@@ -429,31 +429,12 @@
 
       
         
-          <ul>
-<li><p>Links worth of considerring</p>
-<blockquote>
-<p><a href="https://blog.csdn.net/shile/article/details/78714189" target="_blank" rel="noopener">https://blog.csdn.net/shile/article/details/78714189</a></p>
-</blockquote>
-</li>
-<li><p>Git init in the directory</p>
-<blockquote>
-<p><code>git init</code><br>Initialized empty Git repository in /media/pold/Work/Leopold.Sun/Blog/leopold-sun/.git/</p>
-</blockquote>
-</li>
-<li><p>Configure SSH-key of github</p>
-<blockquote>
-<p><code>ssh-keygen -t rsa -C your-email</code><br>put the id-rsa.pub in your github ssh settings</p>
-</blockquote>
-</li>
-<li><p>Git pull the repository of github</p>
-<blockquote>
-<p><code>git clone git@github.com:Leopold-Sun/Leopold-Sun.github.io.git</code></p>
-</blockquote>
-</li>
-</ul>
+          <h1 id="Envoy-Proxy简述"><a href="#Envoy-Proxy简述" class="headerlink" title="Envoy Proxy简述"></a>Envoy Proxy简述</h1><p>Envoy Proxy也可以充当service的<code>sidecar</code>，我们可以将自己的<code>service</code>与<code>envoy proxy sidecar</code>协同部署以实现微服务的功能。代理可以专注与实现路由、负载均衡、服务发现、熔断机制和超时重传等机制，而service只需专注与如何实现自身的功能而将流量的路由等工作<code>offload</code>至<code>sidecar</code>。</p>
+<h2 id="服务间通信"><a href="#服务间通信" class="headerlink" title="服务间通信"></a>服务间通信</h2><p><img src="/images/envoy/service2service.svg" alt=""></p>
+<h2 id="集群内路由"><a href="#集群内路由" class="headerlink" title="集群内路由"></a>集群内路由</h2>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/09/Git-to-upload-blogs/" rel="contents">
+            <a class="btn" href="/2019/01/10/envoy-front-proxy-sandbox/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -504,7 +485,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2018/12/09/vppIns/">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/07/docker-managing-ports/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leopold.Seagal">
@@ -523,7 +504,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/09/vppIns/" itemprop="url">VPP instructions</a></h2>
+                <a class="post-title-link" href="/2019/01/07/docker-managing-ports/" itemprop="url">docker - managing ports</a></h2>
         
 
         <div class="post-meta">
@@ -535,8 +516,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-09T00:00:00+08:00">
-                2018-12-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-07T17:28:41+08:00">
+                2019-01-07
               </time>
             
 
@@ -558,8 +539,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/VPP/" itemprop="url" rel="index">
-                    <span itemprop="name">VPP</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -617,13 +598,13 @@
 
       
         
-          <h5 id="非交互模式（Linux下）"><a href="#非交互模式（Linux下）" class="headerlink" title="非交互模式（Linux下）"></a><em>非交互模式（Linux下）</em></h5><p>Linux创建veth接口对： ip link add name vpp1out type veth peer name vpp1host </p>
-<p>Linux启动veth接口的两端：ip link set  ${veth-name} up</p>
-<p>Linux为veth配置IP地址： ip addr add 10.10.1.1/24 dev vpp1host  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip link add veth0 type veth peer name veth1</span><br><span class="line">ip addr add 10.1.0.1/24 dev veth0</span><br><span class="line">ip addr add 10.1.0.2/24 dev veth1</span><br></pre></td></tr></table></figure>
+          <blockquote>
+<p>Using docker to run particular applications or services usually requires developer to map one specific port number of the container to the port number of the Docker host.</p>
+</blockquote>
+<h1 id="Example-form-Docker-Guide"><a href="#Example-form-Docker-Guide" class="headerlink" title="Example form Docker Guide"></a>Example form <a href="https://www.tutorialspoint.com/docker/docker_quick_guide.htm" target="_blank" rel="noopener">Docker Guide</a></h1><h2 id="Docker-pull-jenkins"><a href="#Docker-pull-jenkins" class="headerlink" title="Docker pull jenkins"></a>Docker pull jenkins</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker pull jenkins</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/09/vppIns/" rel="contents">
+            <a class="btn" href="/2019/01/07/docker-managing-ports/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -674,7 +655,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2018/07/16/america_drama/">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/07/push-image-to-DockerHub/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leopold.Seagal">
@@ -693,7 +674,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/16/america_drama/" itemprop="url">Drama & Film</a></h2>
+                <a class="post-title-link" href="/2019/01/07/push-image-to-DockerHub/" itemprop="url">Push image to DockerHub</a></h2>
         
 
         <div class="post-meta">
@@ -705,8 +686,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-16T00:00:00+08:00">
-                2018-07-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-07T14:56:35+08:00">
+                2019-01-07
               </time>
             
 
@@ -728,8 +709,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Drama/" itemprop="url" rel="index">
-                    <span itemprop="name">Drama</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -772,10 +753,6 @@
           
 
           
-              <div class="post-description">
-                  Oh my friends, here are some fantatstic movies and dramas I want to share with you !
-              </div>
-          
 
         </div>
       </header>
@@ -791,18 +768,18 @@
 
       
         
-          
-            <a id="more"></a>
-<h1 id="Drama"><a href="#Drama" class="headerlink" title="Drama"></a>Drama</h1><ul>
-<li>Fringe</li>
-</ul>
-<hr>
-<h1 id="Film"><a href="#Film" class="headerlink" title="Film"></a>Film</h1><ul>
-<li>Bridge to Terabithia</li>
-</ul>
-<p><i class="fa fa-github"></i><br><i class="fa fa-hand-spock-o" aria-hidden="true"></i></p>
-
-          
+          <h1 id="Preliminary"><a href="#Preliminary" class="headerlink" title="Preliminary"></a>Preliminary</h1><blockquote>
+<p><em>Open source accelerates progress of world.</em></p>
+</blockquote>
+<p>And here comes <a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a></p>
+<h1 id="Log-into-Docker-Hub-amp-Create-a-repository"><a href="#Log-into-Docker-Hub-amp-Create-a-repository" class="headerlink" title="Log into Docker Hub &amp; Create a repository"></a>Log into Docker Hub &amp; Create a repository</h1><p><img src="/images/docker/createrepo.jpg" alt=""></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/07/push-image-to-DockerHub/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -849,7 +826,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2017/10/10/DMA_introduction/">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/07/build-a-docker-image/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leopold.Seagal">
@@ -868,7 +845,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/10/DMA_introduction/" itemprop="url">Introduction to DMA solutions</a></h2>
+                <a class="post-title-link" href="/2019/01/07/build-a-docker-image/" itemprop="url">build a docker image</a></h2>
         
 
         <div class="post-meta">
@@ -880,8 +857,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-10T14:08:00+08:00">
-                2017-10-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-07T14:24:14+08:00">
+                2019-01-07
               </time>
             
 
@@ -903,8 +880,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/NFV/" itemprop="url" rel="index">
-                    <span itemprop="name">NFV</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -962,17 +939,194 @@
 
       
         
-          <h3 id="Referrences"><a href="#Referrences" class="headerlink" title="Referrences"></a>Referrences</h3><ul>
-<li><a href="https://wiki.fd.io/view/VPP/What_is_VPP%3F" target="_blank" rel="noopener">What is VPP</a></li>
-<li><a href="https://wiki.fd.io/view/VPP" target="_blank" rel="noopener">FD.io VPP</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/40049446" target="_blank" rel="noopener">知乎</a></li>
-<li><a href="https://www.metaswitch.com/blog/accelerating-the-nfv-data-plane" target="_blank" rel="noopener">SRI/OV DPDK</a></li>
-<li><a href="https://www.metaswitch.com/blog/fd.io-takes-over-vpp" target="_blank" rel="noopener">FD.io Takes Over VPP</a></li>
-<li><a href="https://blog.selectel.com/introduction-dpdk-architecture-principles/" target="_blank" rel="noopener">Introduction to DPDK: Architecture and Principles</a></li>
+          <p>Let’s see how to build our own docker image.</p>
+<h1 id="Creat-and-configure-Dockerfile"><a href="#Creat-and-configure-Dockerfile" class="headerlink" title="Creat and configure Dockerfile"></a>Creat and configure Dockerfile</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim Dockerfile</span><br><span class="line">$ cat Dockerfile</span><br><span class="line">\<span class="comment">#This is a sample Image </span></span><br><span class="line">FROM ubuntu </span><br><span class="line">MAINTAINER leopold.sga@outlook.com </span><br><span class="line"></span><br><span class="line">RUN apt-get update </span><br><span class="line">RUN apt-get install -y nginx</span><br><span class="line">CMD [“<span class="built_in">echo</span>”,”Image created”]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>#</code> is followed by commments</li>
+<li><code>FROM</code> represents what base image your image is based from</li>
+<li><code>RNU</code> to run commands in your image</li>
+<li><code>CMD</code> to display messages to user.</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/DMA_introduction/" rel="contents">
+            <a class="btn" href="/2019/01/07/build-a-docker-image/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.com/2019/01/07/docker-container/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leopold.Seagal">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/europe-man.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="INFINITE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/07/docker-container/" itemprop="url">docker-container commands and its architecture</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-07T13:51:59+08:00">
+                2019-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Docker-Container"><a href="#Docker-Container" class="headerlink" title="Docker Container"></a>Docker Container</h1><p>The instances of Docker Images are containers which could be runned via <code>run</code> command and reveals the basic purpose of Docker.</p>
+<h2 id="Running-a-container-and-listing-containers"><a href="#Running-a-container-and-listing-containers" class="headerlink" title="Running a container and listing containers"></a>Running a container and listing containers</h2><p>Using <code>it</code> to run docker containers in an interactive mode.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run –it &#123;image name or ID&#125; /bin/bash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Because <code>exit</code> will just kill the borned container.,you can use <code>Ctrl+P+Q</code> to exit the interactive shell with the contianer reserved. </p>
+</blockquote>
+<blockquote>
+<p><code>nsenter</code> command could achieve the very same thing.——<a href="https://hub.docker.com/r/jpetazzo/nsenter/dockerfile/" target="_blank" rel="noopener">nsenter</a></p>
+</blockquote>
+<p>Using <code>ps</code> command to list docker containers</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker ps</span><br><span class="line">$ sudo docker ps -a	<span class="comment"># returns all of the containers on the system.</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/07/docker-container/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1014,7 +1168,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1063,7 +1217,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1074,7 +1228,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -1085,7 +1239,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1170,7 +1324,7 @@ show_date_time();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
