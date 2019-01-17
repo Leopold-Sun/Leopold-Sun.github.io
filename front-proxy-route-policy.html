@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="INFINITE">
 <meta property="og:description" content="KubeCon AbstractFront Proxy is a representative sandbox of Envoy service mesh. The routing policy of Envoy proxy will inevitably limit the forwarding rate of packets when the number of services it ser">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-15T04:21:28.064Z">
+<meta property="og:updated_time" content="2019-01-17T08:32:19.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="front proxy route policy">
 <meta name="twitter:description" content="KubeCon AbstractFront Proxy is a representative sandbox of Envoy service mesh. The routing policy of Envoy proxy will inevitably limit the forwarding rate of packets when the number of services it ser">
@@ -346,8 +346,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T13:27:58+08:00">
-                2019-01-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-17T13:27:58+08:00">
+                2019-01-17
               </time>
             
 
@@ -430,6 +430,80 @@
         <h1 id="KubeCon-Abstract"><a href="#KubeCon-Abstract" class="headerlink" title="KubeCon Abstract"></a>KubeCon Abstract</h1><p>Front Proxy is a representative sandbox of Envoy service mesh. The routing policy of Envoy proxy will inevitably limit the forwarding rate of packets when the number of services it serves grows to be large such as 200. Guoao Sun will review the common routing policy of envoy proxy, discuss one crucial factor interfering its performance, and propose one optimization method to address this challenge.</p>
 <a id="more"></a>
 <hr>
+<h1 id="Preliminaries"><a href="#Preliminaries" class="headerlink" title="Preliminaries"></a>Preliminaries</h1><blockquote>
+<p><a href="https://www.codementor.io/codementorteam/a-comprehensive-guide-to-implementation-of-singly-linked-list-using-c_plus_plus-ondlm5azr" target="_blank" rel="noopener">2016: A Comprehensive Guide To Singly Linked List Using C++</a></p>
+</blockquote>
+<h2 id="C-C-链表"><a href="#C-C-链表" class="headerlink" title="C/C++ 链表"></a>C/C++ 链表</h2><blockquote>
+<p>A linked list is a data structure that can store an indefinite amount of items. These items are connected using pointers in a sequential manner.</p>
+</blockquote>
+<h3 id="数组与链表优劣比较"><a href="#数组与链表优劣比较" class="headerlink" title="数组与链表优劣比较"></a>数组与链表优劣比较</h3><table>
+<thead>
+<tr>
+<th>comparison</th>
+<th>array</th>
+<th>linklist</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>分配连续的内存地址</td>
+<td>用时分配，内存地址可以不连续</td>
+</tr>
+<tr>
+<td>search</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>add/delete</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>size</td>
+<td>数组在被定义时大小被固定</td>
+<td>按需动态地申请内存</td>
+</tr>
+<tr>
+<td>data type</td>
+<td>同一个数组元素类型一致</td>
+<td>链表结构可存储多种类型的数据</td>
+</tr>
+<tr>
+<td>type</td>
+<td>array</td>
+<td>单链表，循环链表，双向链表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><h3 id="链表类别"><a href="#链表类别" class="headerlink" title="链表类别"></a>链表类别</h3><ol>
+<li>单链表<singly-linked list=""><blockquote>
+<p>每个链表元素包含存储的数值和指向后驱元素的link，最后一个元素指向NULL。</p>
+</blockquote>
+</singly-linked></li>
+<li>双向链表<doubly-linked list=""><blockquote>
+<p>双向链表的元素包含存储的数值与前、后驱link。</p>
+</blockquote>
+</doubly-linked></li>
+</ol>
+<h3 id="链表元素"><a href="#链表元素" class="headerlink" title="链表元素"></a>链表元素</h3><ul>
+<li>一般元素<blockquote>
+<p>linklist的元素被定义为<code>node</code>。<code>node</code>结构包含<code>data</code>和<code>next</code>两部分。<code>data</code>部分可以包含不止一个数值变量，<code>next</code>存储<code>the next node</code>的地址，也即是表示上述</p>
+</blockquote>
+</li>
+<li>头部元素<blockquote>
+<p>链表的第一<code>node</code>被称为<code>head</code>。</p>
+</blockquote>
+</li>
+<li>尾部元素<blockquote>
+<p>链表的最后一个<code>node</code>被称为<code>tail</code>。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="链表的C-实现"><a href="#链表的C-实现" class="headerlink" title="链表的C++实现"></a>链表的C++实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">int</span> data;</span><br><span class="line">  node *Next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="C-链表创建"><a href="#C-链表创建" class="headerlink" title="C++链表创建"></a>C++链表创建</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">list</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  Private:</span><br><span class="line">    node *head,*tail;</span><br><span class="line">  Public:</span><br><span class="line">    <span class="built_in">list</span>()</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//指向NULL避免产生内存垃圾</span></span><br><span class="line">      head=<span class="literal">NULL</span>;</span><br><span class="line">      tail=<span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//creation</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">creatnode</span><span class="params">(<span class="keyword">int</span> value)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      node *temp=<span class="keyword">new</span> node;</span><br><span class="line">      temp-&gt;data=value;</span><br><span class="line">      <span class="comment">//最后一个node的next指向NULL</span></span><br><span class="line">      temp-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">      <span class="keyword">if</span>(head==<span class="literal">NULL</span>)</span><br><span class="line">      &#123;</span><br><span class="line">        head=temp;</span><br><span class="line">        tail=temp;</span><br><span class="line">        <span class="comment">//已将temp地址赋值给head和tail，temp的值（其表示的地址）已经不需要了</span></span><br><span class="line">        temp=<span class="literal">NULL</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        tail-&gt;next=temp;</span><br><span class="line">        tail=temp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
 <h1 id="Route-Policy-Analysis"><a href="#Route-Policy-Analysis" class="headerlink" title="Route Policy Analysis"></a>Route Policy Analysis</h1><h2 id="Locate-router-h"><a href="#Locate-router-h" class="headerlink" title="Locate router.h"></a>Locate router.h</h2><h3 id="Used-commands"><a href="#Used-commands" class="headerlink" title="Used commands"></a>Used commands</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">$ find . -name *route*</span><br><span class="line">./docs/root/api-v2/http_routes</span><br><span class="line">./docs/root/api-v2/http_routes/http_routes.rst</span><br><span class="line">./docs/root/install/tools/route_table_check_tool.rst</span><br><span class="line">./docs/root/configuration/thrift_filters/router_filter.rst</span><br><span class="line">./docs/root/configuration/http_conn_man/route_matching.rst</span><br><span class="line">./docs/root/configuration/tools/router_check.rst</span><br><span class="line">./docs/root/configuration/http_filters/router_filter.rst</span><br><span class="line">./api/envoy/config/filter/thrift/router</span><br><span class="line">./api/envoy/config/filter/thrift/router/v2alpha1/router.proto</span><br><span class="line">./api/envoy/config/filter/http/router</span><br><span class="line">./api/envoy/config/filter/http/router/v2/router.proto</span><br><span class="line">./api/envoy/config/filter/network/thrift_proxy/v2alpha1/route.proto</span><br><span class="line">./api/envoy/api/v2/route</span><br><span class="line">./api/envoy/api/v2/route/route.proto</span><br><span class="line">./<span class="built_in">test</span>/extensions/filters/http/router</span><br><span class="line">./<span class="built_in">test</span>/extensions/filters/network/thrift_proxy/router_test.cc</span><br><span class="line">./<span class="built_in">test</span>/extensions/filters/network/thrift_proxy/router_ratelimit_test.cc</span><br><span class="line">./<span class="built_in">test</span>/extensions/filters/network/thrift_proxy/route_matcher_test.cc</span><br><span class="line">./<span class="built_in">test</span>/tools/router_check</span><br><span class="line">./<span class="built_in">test</span>/tools/router_check/router.h</span><br><span class="line">./<span class="built_in">test</span>/tools/router_check/router_check.cc</span><br><span class="line">./<span class="built_in">test</span>/tools/router_check/router.cc</span><br><span class="line">./<span class="built_in">test</span>/tools/router_check/<span class="built_in">test</span>/route_tests.sh</span><br><span class="line">./<span class="built_in">test</span>/mocks/router</span><br><span class="line">./<span class="built_in">test</span>/common/router</span><br><span class="line">./<span class="built_in">test</span>/common/router/route_fuzz.proto</span><br><span class="line">./<span class="built_in">test</span>/common/router/router_test.cc</span><br><span class="line">./<span class="built_in">test</span>/common/router/router_ratelimit_test.cc</span><br><span class="line">./<span class="built_in">test</span>/common/router/router_upstream_log_test.cc</span><br><span class="line">./<span class="built_in">test</span>/common/router/route_fuzz_test.cc</span><br><span class="line">./<span class="built_in">test</span>/common/router/route_corpus</span><br><span class="line">./<span class="built_in">test</span>/common/router/route_corpus/clusterfuzz-testcase-minimized-route_fuzz_test-5654717359718400</span><br><span class="line">./<span class="built_in">test</span>/common/router/route_corpus/clusterfuzz-testcase-minimized-route_fuzz_test-5142800207708160</span><br><span class="line">./<span class="built_in">test</span>/common/router/route_corpus/clusterfuzz-testcase-minimized-route_fuzz_test-5198208916520960</span><br><span class="line">./<span class="built_in">test</span>/common/router/route_corpus/clusterfuzz-testcase-route_fuzz_test-5647162250625024</span><br><span class="line">./<span class="built_in">test</span>/common/json/config_schemas_test_data/test_route_configuration_schema.py</span><br><span class="line">./<span class="built_in">test</span>/common/json/config_schemas_test_data/test_route_entry_schema.py</span><br><span class="line">./<span class="built_in">test</span>/common/json/config_schemas_test_data/test_http_router_schema.py</span><br><span class="line">./configs/envoy_router_v2.template.yaml</span><br><span class="line">./include/envoy/router</span><br><span class="line">./include/envoy/router/router_ratelimit.h</span><br><span class="line">./include/envoy/router/router.h</span><br><span class="line">&lt;mark&gt;./include/envoy/router/route_config_provider_manager.h</span><br><span class="line">./<span class="built_in">source</span>/extensions/filters/http/router</span><br><span class="line">./<span class="built_in">source</span>/extensions/filters/network/thrift_proxy/router</span><br><span class="line">./<span class="built_in">source</span>/extensions/filters/network/thrift_proxy/router/router_ratelimit.h</span><br><span class="line">./<span class="built_in">source</span>/extensions/filters/network/thrift_proxy/router/router.h</span><br><span class="line">./<span class="built_in">source</span>/extensions/filters/network/thrift_proxy/router/router_ratelimit_impl.cc</span><br><span class="line">./<span class="built_in">source</span>/extensions/filters/network/thrift_proxy/router/router_impl.cc</span><br><span class="line">./<span class="built_in">source</span>/extensions/filters/network/thrift_proxy/router/router_ratelimit_impl.h</span><br><span class="line">./<span class="built_in">source</span>/extensions/filters/network/thrift_proxy/router/router_impl.h</span><br><span class="line">./<span class="built_in">source</span>/common/router</span><br><span class="line">./<span class="built_in">source</span>/common/router/router_ratelimit.h</span><br><span class="line">./<span class="built_in">source</span>/common/router/router.h</span><br><span class="line">./<span class="built_in">source</span>/common/router/router.cc</span><br><span class="line">./<span class="built_in">source</span>/common/router/router_ratelimit.cc&lt;/mark&gt;</span><br></pre></td></tr></table></figure>
 <p>Then we mark the relative libraries and source files.从bash的返回值可知，<code>Envoy Router</code>的代码分为三个主要部分：</p>
 <ol>
@@ -472,18 +546,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/pat-1001-1002-1003-1004.html" rel="prev" title="PAtest 1001+1002+1003+1004">
-                <i class="fa fa-chevron-left"></i> PAtest 1001+1002+1003+1004
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/envoy-front-proxy-sandbox.html" rel="next" title="envoy: front-proxy sandbox">
-                envoy: front-proxy sandbox <i class="fa fa-chevron-right"></i>
+              <a href="/struct-unio.html" rel="next" title="struct & unio">
+                struct & unio <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -696,7 +766,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#KubeCon-Abstract"><span class="nav-number">1.</span> <span class="nav-text">KubeCon Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Route-Policy-Analysis"><span class="nav-number">2.</span> <span class="nav-text">Route Policy Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Locate-router-h"><span class="nav-number">2.1.</span> <span class="nav-text">Locate router.h</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Used-commands"><span class="nav-number">2.1.1.</span> <span class="nav-text">Used commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logic"><span class="nav-number">2.1.2.</span> <span class="nav-text">Logic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#router-h-与-router-cc"><span class="nav-number">2.1.3.</span> <span class="nav-text">router.h 与 router.cc</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#KubeCon-Abstract"><span class="nav-number">1.</span> <span class="nav-text">KubeCon Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preliminaries"><span class="nav-number">2.</span> <span class="nav-text">Preliminaries</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C-链表"><span class="nav-number">2.1.</span> <span class="nav-text">C/C++ 链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组与链表优劣比较"><span class="nav-number">2.1.1.</span> <span class="nav-text">数组与链表优劣比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表"><span class="nav-number">2.1.2.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表类别"><span class="nav-number">2.1.3.</span> <span class="nav-text">链表类别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表元素"><span class="nav-number">2.1.4.</span> <span class="nav-text">链表元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表的C-实现"><span class="nav-number">2.1.5.</span> <span class="nav-text">链表的C++实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-链表创建"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">C++链表创建</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Route-Policy-Analysis"><span class="nav-number">3.</span> <span class="nav-text">Route Policy Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Locate-router-h"><span class="nav-number">3.1.</span> <span class="nav-text">Locate router.h</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Used-commands"><span class="nav-number">3.1.1.</span> <span class="nav-text">Used commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logic"><span class="nav-number">3.1.2.</span> <span class="nav-text">Logic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#router-h-与-router-cc"><span class="nav-number">3.1.3.</span> <span class="nav-text">router.h 与 router.cc</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
