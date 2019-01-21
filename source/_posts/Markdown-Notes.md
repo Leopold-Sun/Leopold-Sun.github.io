@@ -21,15 +21,16 @@ keywords:
 <!-- more  -->
 
 # Tables
+> Table不能放入引用`>`区域中。
 
 	- syntax
 	
 	```
-	| Default aligned | Left aligned | Center aligned  | Right aligned  |
-	|-----------------|:-------------|:---------------:|---------------:|
-	| First body part | Second cell  | Third cell      | fourth cell    |
-	| Second line     | foo          | **strong**      | baz            |
-	| Third line      | quux         | baz             | bar            |
+| Default aligned | Left aligned | Center aligned  | Right aligned  |
+|-----------------|:-------------|:---------------:|---------------:|
+| First body part | Second cell  | Third cell      | fourth cell    |
+| Second line     | foo          | **strong**      | baz            |
+| Third line      | quux         | baz             | bar            |
 	```
 
 	- Display
@@ -60,6 +61,7 @@ keywords:
  */
 ```
 - Lable tag
+
 ```
 From {% label @fairest creatures %} we desire increase
 That thereby {% label primary@beauty's rose %} might never die
@@ -130,6 +132,10 @@ Pity the world, or else this glutton be
 	- display
 
 	$$E=mc^2$$
+
+# 多级缩进
+
+> 4个空格或者一个Tab。
 ---------------
 
 # References
