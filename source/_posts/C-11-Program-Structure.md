@@ -272,6 +272,149 @@ int main ()
 }
 ```
 
+----------------------------------
+# Overloaded and templates
+若是两个同名函数只有返回值类型不同，则不能重载;两个同名函数的参数列表中只要存在任意一个不同类型的参数，就能重载。
+- Example#1
+```C++
+// overloading functions
+#include <iostream>
+using namespace std;
+
+int operate (int a, int b)
+{
+  return (a*b);
+}
+
+double operate (double a, double b)
+{
+  return (a/b);
+}
+
+int main ()
+{
+  int x=5,y=2;
+  double n=5.0,m=2.0;
+  cout << operate (x,y) << '\n';
+  cout << operate (n,m) << '\n';
+  return 0;
+}
+```
+
+## Templates
+> 若是若干重载函数只存在参数列表的类型类型差异，参数个数、函数名与函数返回值类型等都相同，可以使用模板以减少函数定义的冗余度。
+
+- Syntax
+```c++
+template <template-parameters> function-declaration
+```
+
+- Example#2
+```c++
+// overloaded functions
+#include <iostream>
+using namespace std;
+
+int sum (int a, int b)
+{
+  return a+b;
+}
+
+double sum (double a, double b)
+{
+  return a+b;
+}
+
+int main ()
+{
+  cout << sum (10,20) << '\n';
+  cout << sum (1.0,1.5) << '\n';
+  return 0;
+}
+
+//使用模板
+template <class SomeType>
+SomeType sum (SomeType a, SomeType b)
+{
+  return a+b;
+}
+```
+
+## Non-type template arguments
+模板参数的类型可以是：`class typename`、`type variable`。也即是可以是类、具体的类型。
+
+- Examples#3
+```c++
+//添加变量
+// template arguments
+#include <iostream>
+using namespace std;
+
+template <class T, int N>
+T fixed_multiply (T val)
+{
+  return val * N;
+}
+
+template <class T>
+T fixed_multiply2 (T val, int N)
+{
+  return val * N;
+}
+
+int main() {
+  std::cout << fixed_multiply<int,2>(10) << '\n';
+  std::cout << fixed_multiply2(10,2) << '\n';
+}
+```
+	- Return value
+	```c++
+20
+20
+	```
+
+- Examples#4
+```c++
+// function templates
+#include <iostream>
+using namespace std;
+
+template <class T, class U>
+bool are_equal (T a, U b)
+{
+  return (a==b);
+}
+
+int main ()
+{
+  if (are_equal(10,10.0))
+    cout << "x and y are equal\n";
+  else
+    cout << "x and y are not equal\n";
+  return 0;
+}
+```
+----------------------------------------------
+# Name Visibility
+> C++要求Named entities如函数、变量、组合类型等命名实体在使用之前需要先被declared（声明）。而且不同的命名有自身的作用域，特定区间特定名称的实体同时只能存在一个。具体参见[Namespace](https://en.cppreference.com/w/cpp/language/namespace)。
+函数体内部变量的作用域是函数起始至结束;全局变量的作用域为整个程序的生命周期。
+
+|items|Local name|non-local name|
+|-|-|-|
+|life cycle|short|long|
+|possibility of name collision|small|big|
+
+## Namespace
+> 存储类
+
+- 静态存储（static storage）
+全局变量，作用域为整个命名空间的变量的存储持续整个程序周期。
+
+- 自动存储（automatic storage）
+局部变量，作用域可能是一个代码块
+
+**动态、自动存储的差别**：
+> 静态存储的变量若是未被显式初始化（隐式初始化），则被自动初始化为`zeros`;自动存储的变量若是未被显式初始化（隐式初始化），则保留未初始化状态，表示一个为定义的value。
 ----------------------------------------------
 
 # Reference
