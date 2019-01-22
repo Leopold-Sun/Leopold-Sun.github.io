@@ -450,7 +450,89 @@ int main ()
 			```
 ----------------------
 # Dynamic Memroy
-> 
+> 在不同的程序中，存在这样一个需求：
+程序的部分内存只有在`runtime`才能被确定。
+
+C++语言包含两种对内存操作的函数：
+1. new
+2. delete
+
+## operators new & new[]
+`new`用于动态内存分配，语法实现上，其后跟着`type`;若需要申请内存以存放多个元素，则与要在最后加上`[the number of required elements]`。
+- Syntax
+```c++
+pointer = new type;	//used to allocate memory containing one single element of type "type"
+pointer = new type [number_of_elements];	//used to allocate a block (an array) of elements of type "type"
+```
+
+- Example
+```c++
+int * foo;
+foo = new int [5];
+```
+	上述实例语句动态分配**5**个类型为**int**的元素并返回一个指向该五元素序列头部（第“0”个元素）的**pointer**，该指针指向一个包含五个**int**元素空间的内存块。
+	- 访问动态内存
+	**数组访问形式**： foo[0], foo[1], foo[2], ...
+	**指针访问形式**： \*foo, \*[foo+1], \*[foo+2], ...
+<mark>数组声明、动态内存申请的区别</mark>： 
+> 编译时即需要确定数组的长度，即数组在声明时的长度表示必须是**constant expression**;
+动态内存申请可以使用变量表示所需要申请的内存大小,在`runtime`时向`memory heap`动态申请内存空间。因为计算机内存有限，不保证动态申请操作的返回值，C++设置了异常机制，参见[Dynamic memory](http://www.cplusplus.com/doc/tutorial/dynamic/)。
+
+## operators delete & delete[]
+> C++使用`delete`释放被动态申请的内存空间以变回可用状态。
+
+- Syntax
+```c++
+delete pointer;		//释放单个内存元素空间
+delete[] pointer;	//释放内存块
+```
+> delete操作符有两种形式：
+**pointer**、**null pointer**
+
+- Example:
+```c++
+// rememb-o-matic
+#include <iostream>
+#include <new>
+using namespace std;
+
+int main ()
+{
+  int i,n;
+  int * p;
+  cout << "How many numbers would you like to type? ";
+  cin >> i;
+  p= new (nothrow) int[i];
+  if (p == nullptr)
+    cout << "Error: memory could not be allocated";
+  else
+  {
+    for (n=0; n<i; n++)
+    {
+      cout << "Enter number: ";
+      cin >> p[n];
+    }
+    cout << "You have entered: ";
+    for (n=0; n<i; n++)
+      cout << p[n] << ", ";
+    delete[] p;
+  }
+  return 0;
+}
+```
+	- Return value
+	```c++
+How many numbers would you like to type? 5
+Enter number : 75
+Enter number : 436
+Enter number : 1067
+Enter number : 8
+Enter number : 32
+You have entered: 75, 436, 1067, 8, 32,
+	```
+
+-------------------
+# Data structure
 
 
 --------------------
