@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="INFINITE">
 <meta property="og:description" content="Statements and Flow Control statements/语句C++语句即是程序中的单个的指令，以分号(‘;’semicolon)结束在程序执行时按顺序执行。Flow control控制、执行语句。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-18T09:53:15.654Z">
+<meta property="og:updated_time" content="2019-01-22T02:59:23.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++11 Program Structure">
 <meta name="twitter:description" content="Statements and Flow Control statements/语句C++语句即是程序中的单个的指令，以分号(‘;’semicolon)结束在程序执行时按顺序执行。Flow control控制、执行语句。">
@@ -524,6 +524,74 @@
 </li>
 </ul>
 <hr>
+<h1 id="Overloaded-and-templates"><a href="#Overloaded-and-templates" class="headerlink" title="Overloaded and templates"></a>Overloaded and templates</h1><p>若是两个同名函数只有返回值类型不同，则不能重载;两个同名函数的参数列表中只要存在任意一个不同类型的参数，就能重载。</p>
+<ul>
+<li>Example#1<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// overloading functions</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">operate</span> <span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (a*b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">operate</span> <span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (a/b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x=<span class="number">5</span>,y=<span class="number">2</span>;</span><br><span class="line">  <span class="keyword">double</span> n=<span class="number">5.0</span>,m=<span class="number">2.0</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; operate (x,y) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; operate (n,m) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a>Templates</h2><blockquote>
+<p>若是若干重载函数只存在参数列表的类型类型差异，参数个数、函数名与函数返回值类型等都相同，可以使用模板以减少函数定义的冗余度。</p>
+</blockquote>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">template</span>-parameters&gt; function-declaration</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Example#2</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// overloaded functions</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span> <span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">sum</span> <span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; sum (<span class="number">10</span>,<span class="number">20</span>) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; sum (<span class="number">1.0</span>,<span class="number">1.5</span>) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用模板</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">SomeType</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">SomeType</span> <span class="title">sum</span> (<span class="title">SomeType</span> <span class="title">a</span>, <span class="title">SomeType</span> <span class="title">b</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Non-type-template-arguments"><a href="#Non-type-template-arguments" class="headerlink" title="Non-type template arguments"></a>Non-type template arguments</h2><p>模板参数的类型可以是：<code>class typename</code>、<code>type variable</code>。也即是可以是类、具体的类型。</p>
+<ul>
+<li><p>Examples#3</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加变量</span></span><br><span class="line"><span class="comment">// template arguments</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">int</span> <span class="title">N</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">T</span> <span class="title">fixed_multiply</span> (<span class="title">T</span> <span class="title">val</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">return</span> val * N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">T</span> <span class="title">fixed_multiply2</span> (<span class="title">T</span> <span class="title">val</span>, <span class="title">int</span> <span class="title">N</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">return</span> val * N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; fixed_multiply&lt;<span class="keyword">int</span>,<span class="number">2</span>&gt;(<span class="number">10</span>) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; fixed_multiply2(<span class="number">10</span>,<span class="number">2</span>) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Return value<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">20</span></span><br><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Examples#4</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// function templates</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">class</span> <span class="title">U</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">bool</span> <span class="title">are_equal</span> (<span class="title">T</span> <span class="title">a</span>, <span class="title">U</span> <span class="title">b</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">return</span> (a==b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (are_equal(<span class="number">10</span>,<span class="number">10.0</span>))</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"x and y are equal\n"</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"x and y are not equal\n"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h1 id="Name-Visibility"><a href="#Name-Visibility" class="headerlink" title="Name Visibility"></a>Name Visibility</h1><blockquote>
+<p>C++要求Named entities如函数、变量、组合类型等命名实体在使用之前需要先被declared（声明）。而且不同的命名有自身的作用域，特定区间特定名称的实体同时只能存在一个。具体参见<a href="https://en.cppreference.com/w/cpp/language/namespace" target="_blank" rel="noopener">Namespace</a>。<br>函数体内部变量的作用域是函数起始至结束;全局变量的作用域为整个程序的生命周期。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>items</th>
+<th>Local name</th>
+<th>non-local name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>life cycle</td>
+<td>short</td>
+<td>long</td>
+</tr>
+<tr>
+<td>possibility of name collision</td>
+<td>small</td>
+<td>big</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Namespace"><a href="#Namespace" class="headerlink" title="Namespace"></a>Namespace</h2><blockquote>
+<p>存储类</p>
+</blockquote>
+<ul>
+<li><p>静态存储（static storage）<br>全局变量，作用域为整个命名空间的变量的存储持续整个程序周期。</p>
+</li>
+<li><p>自动存储（automatic storage）<br>局部变量，作用域可能是一个代码块</p>
+</li>
+</ul>
+<p><strong>动态、自动存储的差别</strong>：</p>
+<blockquote>
+<p>静态存储的变量若是未被显式初始化（隐式初始化），则被自动初始化为<code>zeros</code>;自动存储的变量若是未被显式初始化（隐式初始化），则保留未初始化状态，表示一个为定义的value。</p>
+</blockquote>
+<hr>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
 <li><a href="https://zh.cppreference.com/w/cpp" target="_blank" rel="noopener">C++ 参考手册</a></li>
 <li><a href="https://en.cppreference.com/w/" target="_blank" rel="noopener">C++ Reference</a></li>
@@ -560,6 +628,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/C-data-structure-and-compound-data-types.html" rel="prev" title="C++ data structure & compound data types">
+                <i class="fa fa-chevron-left"></i> C++ data structure & compound data types
+              </a>
             
           </div>
 
@@ -649,7 +721,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -781,7 +853,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Statements-and-Flow-Control"><span class="nav-number">1.</span> <span class="nav-text">Statements and Flow Control</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Statement-Structure"><span class="nav-number">1.1.</span> <span class="nav-text">Statement Structure</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Functions"><span class="nav-number">2.</span> <span class="nav-text">Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#传值与传引用"><span class="nav-number">2.1.</span> <span class="nav-text">传值与传引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内联函数"><span class="nav-number">2.2.</span> <span class="nav-text">内联函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recursivity"><span class="nav-number">2.3.</span> <span class="nav-text">Recursivity</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Statements-and-Flow-Control"><span class="nav-number">1.</span> <span class="nav-text">Statements and Flow Control</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Statement-Structure"><span class="nav-number">1.1.</span> <span class="nav-text">Statement Structure</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Functions"><span class="nav-number">2.</span> <span class="nav-text">Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#传值与传引用"><span class="nav-number">2.1.</span> <span class="nav-text">传值与传引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内联函数"><span class="nav-number">2.2.</span> <span class="nav-text">内联函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recursivity"><span class="nav-number">2.3.</span> <span class="nav-text">Recursivity</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Overloaded-and-templates"><span class="nav-number">3.</span> <span class="nav-text">Overloaded and templates</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Templates"><span class="nav-number">3.1.</span> <span class="nav-text">Templates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-type-template-arguments"><span class="nav-number">3.2.</span> <span class="nav-text">Non-type template arguments</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Name-Visibility"><span class="nav-number">4.</span> <span class="nav-text">Name Visibility</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Namespace"><span class="nav-number">4.1.</span> <span class="nav-text">Namespace</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>

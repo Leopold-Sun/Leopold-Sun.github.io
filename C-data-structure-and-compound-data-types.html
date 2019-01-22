@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('Password:') !== ''){
+                alert('Error！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/rose.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/rose.jpeg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CPP,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Contaier - Array 数组： 一组类型一致的元素存放在连续的内存位置（contigous memory locations），能够通过给特定的标识符添加指针以便引用该内存地址的值。C++规定，数组第一位被标志为“第0位”。   Syntax  Declaration  数组在被使用前需要被声明。  C++: 12#include&amp;lt;array&amp;gt;array &amp;lt;type,e">
+<meta name="keywords" content="CPP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ data structure &amp; compound data types">
+<meta property="og:url" content="https://leopold-sun.github.io/C-data-structure-and-compound-data-types.html">
+<meta property="og:site_name" content="INFINITE">
+<meta property="og:description" content="Contaier - Array 数组： 一组类型一致的元素存放在连续的内存位置（contigous memory locations），能够通过给特定的标识符添加指针以便引用该内存地址的值。C++规定，数组第一位被标志为“第0位”。   Syntax  Declaration  数组在被使用前需要被声明。  C++: 12#include&amp;lt;array&amp;gt;array &amp;lt;type,e">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://leopold-sun.github.io/images/c++/memaddspace.png">
+<meta property="og:image" content="https://leopold-sun.github.io/images/c++/pointer_to_pointer.png">
+<meta property="og:updated_time" content="2019-01-21T09:23:41.416Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ data structure &amp; compound data types">
+<meta name="twitter:description" content="Contaier - Array 数组： 一组类型一致的元素存放在连续的内存位置（contigous memory locations），能够通过给特定的标识符添加指针以便引用该内存地址的值。C++规定，数组第一位被标志为“第0位”。   Syntax  Declaration  数组在被使用前需要被声明。  C++: 12#include&amp;lt;array&amp;gt;array &amp;lt;type,e">
+<meta name="twitter:image" content="https://leopold-sun.github.io/images/c++/memaddspace.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://leopold-sun.github.io/C-data-structure-and-compound-data-types.html">
+
+
+
+
+
+  <title>C++ data structure & compound data types | INFINITE</title>
+  
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">INFINITE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">银月无迹   洛水焉痕   陌上花开   氤氲清浅</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-leopold-seagal">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            Leopold-Seagal
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix" style="display: none;">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leopold-sun.github.io/C-data-structure-and-compound-data-types.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leopold.Seagal">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/europe-man.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="INFINITE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">C++ data structure & compound data types</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-21T10:46:23+08:00">
+                2019-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CPP/C-11/" itemprop="url" rel="index">
+                    <span itemprop="name">C++11</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Contaier-Array"><a href="#Contaier-Array" class="headerlink" title="Contaier - Array"></a>Contaier - Array</h1><blockquote>
+<p>数组： 一组类型一致的元素存放在连续的内存位置（contigous memory locations），能够通过给特定的标识符添加指针以便引用该内存地址的值。C++规定，数组第一位被标志为“第0位”。</p>
+</blockquote>
+<ul>
+<li><p>Syntax</p>
+<ul>
+<li><p>Declaration</p>
+<blockquote>
+<p>数组在被使用前需要被声明。</p>
+</blockquote>
+<p>C++:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;array&gt;</span></span></span><br><span class="line"><span class="built_in">array</span> &lt;type,elements&gt; array_identifier &#123;value_1, value_2,...,value_(elements<span class="number">-1</span>)&#125;;</span><br></pre></td></tr></table></figure>
+<p>C:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type name [elements];</span><br></pre></td></tr></table></figure>
+<p>type: 类型如 float, int, double, bool…<br>name: 有效的标识符<br>elements: 元素区表示/设定了数组的长度（数组元素的个数），即方括号（square brackets）区域表示了数组的元素数。</p>
+<blockquote>
+<p>数组长度在声明时确定，必须是常数/常数表达式，因为数组被存入静态内存块中，所以在编译时需要确定数组的长度。</p>
+</blockquote>
+</li>
+<li><p>Definition</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type identifier [elements] &#123; value_0, value_1, value_(elements<span class="number">-1</span>) &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>相关操作</p>
+<ol>
+<li><p>初始化</p>
+<blockquote>
+<p>局部数组不需要初始化，局部数组声明时元素状态为未定义。但可以显式定义数组元素，且在方括号（brackets）中定义数组元素的值。</p>
+</blockquote>
+<p><code>type identifier [elements] = { value_0, value_1, value_(elements-1) }</code>. 方括号中的数值数不应当超出数组长度，缺省的数组元素（若是基础类型）被默认定义为<code>zeroes</code>。而对于<code>[]</code>缺省（数组长度为定义），则默认定义的数值数为数组的长度。随着c++的发展，数组声明语法省去了等号（equal sign）<code>=</code>。数组声明语法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type identifier [elements] &#123; value_0, value_1, value_(elements<span class="number">-1</span>) &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组元素访问</p>
+<blockquote>
+<p>使用<code>square brackets</code>指定具体数组元素的位置——索引。方括号的两个作用分别是：其一，声明数组长度;其二，为数组的具体元素提供索引（偏移量）。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name[index]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多维数组（multidimension arrays）</p>
+<blockquote>
+<p>可以将多维数组描述为<code>数组的数组</code>。但是内存的消耗随数组维度的线性增长而呈指数上升，比如多维数组<code>char century [100][365][24][60][60];</code>消耗<mark>3 Gigabytes memory</mark>。</p>
+</blockquote>
+<p><a href="http://www.cplusplus.com/doc/tutorial/arrays/" target="_blank" rel="noopener">Example</a>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> jimmy [<span class="number">3</span>][<span class="number">5</span>];	<span class="comment">// jimmy[1][3]表示第“2”个元素数组的第“4”个元素int型数值。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组作为参数传递</p>
+<blockquote>
+<p>C++表示，不可能将数组表示的整个内存块作为<code>argument</code>直接传递给某个参数。而<strong><code>address</code></strong>（数组的内存地址）可以作为函数的参数传递，而且这种方式更为高效、快捷。<br>以数组为参数的函数声明如下：</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">type <span class="title">function_identifier</span> <span class="params">(<span class="keyword">int</span> arg[])</span></span>;	<span class="comment">//arg的类型为 array of int</span></span><br></pre></td></tr></table></figure>
+<p>Example：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// arrays as parameters</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printarray</span> <span class="params">(<span class="keyword">int</span> arg[], <span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> n=<span class="number">0</span>; n&lt;length; ++n)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; arg[n] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> firstarray[] = &#123;<span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>&#125;;</span><br><span class="line">  <span class="keyword">int</span> secondarray[] = &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>&#125;;</span><br><span class="line">  printarray (firstarray,<span class="number">3</span>);</span><br><span class="line">  printarray (secondarray,<span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Return value:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span> <span class="number">10</span> <span class="number">15</span></span><br><span class="line"><span class="number">2</span> <span class="number">4</span> <span class="number">6</span> <span class="number">8</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C++ 数组库(Library arrays)</p>
+<blockquote>
+<p>C++提供了标准容器——数组（standard container），该标准库将数组内存块的地址复制退化为<code>指针操作</code>。</p>
+</blockquote>
+<p>C语言内嵌数组：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> myarray[<span class="number">3</span>] = &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">3</span>; ++i)</span><br><span class="line">    ++myarray[i];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> elem : myarray)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; elem &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>数组容器库：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;array&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">array</span>&lt;<span class="keyword">int</span>,3&gt; myarray &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;myarray.size(); ++i)</span><br><span class="line">    ++myarray[i];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> elem : myarray)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; elem &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h1 id="Character-sequences"><a href="#Character-sequences" class="headerlink" title="Character sequences"></a>Character sequences</h1><blockquote>
+<p>C++ string 类是一种表示字符串的方式。除此之外，也可以用数组的形式表示字符串。<br>C++约定，字符串终止符为空字符<code>the null character</code>，数值为<code>\0</code>(backslash,zero),”\0”表示字符串的终止。比如：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>t</th>
+<th>e</th>
+<th>s</th>
+<th>t</th>
+<th>\0</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>H</th>
+<th>e</th>
+<th>l</th>
+<th>l</th>
+<th>o</th>
+<th>\0</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>初始化</p>
+<ul>
+<li><p>Terminated initialization</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> myword[] = &#123; <span class="string">'H'</span>, <span class="string">'e'</span>, <span class="string">'l'</span>, <span class="string">'l'</span>, <span class="string">'o'</span>, <span class="string">'\0'</span> &#125;;	<span class="comment">//该char类型数组包含6个数组元素，5个字符加上“\0"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>String Initialization(Null-terminated)</p>
+<blockquote>
+<p><code>double qoutes (&quot;&quot;)</code>自动追加空字符’\0’。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> myword[] = <span class="string">"Hello"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>上面两种初始化方式得到的返回值都是含有6个元素的数组。</p>
+<ul>
+<li><p>String 与 空字符结尾的字符序列</p>
+<blockquote>
+<p>C++两种字符表示方式都支持</p>
+</blockquote>
+<ul>
+<li><p>Example:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// strings and NTCS:</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> question1[] = <span class="string">"What is your name? "</span>;</span><br><span class="line">  <span class="built_in">string</span> question2 = <span class="string">"Where do you live? "</span>;</span><br><span class="line">  <span class="keyword">char</span> answer1 [<span class="number">80</span>];</span><br><span class="line">  <span class="built_in">string</span> answer2;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; question1;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; answer1;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; question2;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; answer2;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello, "</span> &lt;&lt; answer1;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">" from "</span> &lt;&lt; answer2 &lt;&lt; <span class="string">"!\n"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Return value<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">What is your name? Homer</span><br><span class="line">Where <span class="keyword">do</span> you live? Greece</span><br><span class="line">Hello, Homer from Greece!</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Pointers"><a href="#Pointers" class="headerlink" title="Pointers"></a>Pointers</h1><blockquote>
+<p><strong>变量访问</strong>：变量在计算机内存中的位置可以通过其<code>identifier</code>。<br>对于C ++程序，计算机的内存就像一系列内存单元（<code>memory cells</code>），每个内存单元大小为一个字节，每个内存单元具有唯一的地址。这些单字节内存单元的排序方式允许大于一个字节的数据表示占用具有连续地址的内存单元。</p>
+</blockquote>
+<p><img src="/images/c++/memaddspace.png" alt=""></p>
+<ul>
+<li>Address-of operator (&amp;)<blockquote>
+<p><mark>pointer</mark>:存储其他变量地址的变量称为指针，指向其存储的地址所存储的变量。</p>
+</blockquote>
+</li>
+</ul>
+<p>获取变量地址的语法如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addr = &amp;var	<span class="comment">//变量var的地址被赋值给addr</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Dereference operator (*)<blockquote>
+<p>Read *: value pointed by.<br>星号（*）：asterisk.</p>
+</blockquote>
+</li>
+</ul>
+<p>解引用（获取指针所指向的变量值）语法如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">baz = *ptr;	<span class="comment">//baz equal to value pointed by ptr.该语句将指针ptr指向的变量的value赋值给baz。</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>指针操作</p>
+<ul>
+<li><p>指针声明</p>
+<ul>
+<li><p>syntax</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type * name;	<span class="comment">//"type"是指针指向数据/变量的类型</span></span><br></pre></td></tr></table></figure>
+<p>比如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * number;	<span class="comment">//number类型为 int*</span></span><br><span class="line"><span class="keyword">char</span> * character;	<span class="comment">//character类型为 character*</span></span><br><span class="line"><span class="keyword">double</span> * decimals;	<span class="comment">//decimals类型为 double*</span></span><br></pre></td></tr></table></figure>
+<p>上面例子中的三个指针因为存储的都只是所指数据的内存地址，所以指针本身占用的内存大小相同。但不同的操作系统可能相异。<br>而星号(*)只是表示指针，与解引用是不同的解释。<br>Example:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my first pointer</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> firstvalue, secondvalue;</span><br><span class="line">  <span class="keyword">int</span> * mypointer;</span><br><span class="line"></span><br><span class="line">  mypointer = &amp;firstvalue;</span><br><span class="line">  *mypointer = <span class="number">10</span>;</span><br><span class="line">  mypointer = &amp;secondvalue;</span><br><span class="line">  *mypointer = <span class="number">20</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"firstvalue is "</span> &lt;&lt; firstvalue &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"secondvalue is "</span> &lt;&lt; secondvalue &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// more pointers</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> firstvalue = <span class="number">5</span>, secondvalue = <span class="number">15</span>;</span><br><span class="line">  <span class="keyword">int</span> * p1, * p2;</span><br><span class="line"></span><br><span class="line">  p1 = &amp;firstvalue;  <span class="comment">// p1 = address of firstvalue</span></span><br><span class="line">  p2 = &amp;secondvalue; <span class="comment">// p2 = address of secondvalue</span></span><br><span class="line">  *p1 = <span class="number">10</span>;          <span class="comment">// value pointed to by p1 = 10</span></span><br><span class="line">  *p2 = *p1;         <span class="comment">// value pointed to by p2 = value pointed to by p1</span></span><br><span class="line">  p1 = p2;           <span class="comment">// p1 = p2 (value of pointer is copied)</span></span><br><span class="line">  *p1 = <span class="number">20</span>;          <span class="comment">// value pointed to by p1 = 20</span></span><br><span class="line">  </span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"firstvalue is "</span> &lt;&lt; firstvalue &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"secondvalue is "</span> &lt;&lt; secondvalue &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Return value<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firstvalue is <span class="number">10</span></span><br><span class="line">secondvalue is <span class="number">20</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Note:<br><code>int * P1, * P2;</code>表示P1指针为int<em>类型，P2指针为int</em>类型;<br><code>int * P1, P2;</code>表示P1指针为int*类型，P2指针为int类型。</p>
+</li>
+</ul>
+</li>
+<li><p>指针与数组</p>
+<blockquote>
+<p>指针与数组标识符作用类似，但是指针可以被赋予新的地址，数组标识符（表示数组第一个元素的的地址）不能被赋予新的地址。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> myarray [<span class="number">20</span>];</span><br><span class="line"><span class="keyword">int</span> * mypointer;</span><br><span class="line">mypointer = myarray;	<span class="comment">//valid</span></span><br><span class="line">myarray = mypointer;	<span class="comment">//invalid</span></span><br></pre></td></tr></table></figure>
+<p>Example:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// more pointers</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> numbers[<span class="number">5</span>];</span><br><span class="line">  <span class="keyword">int</span> * p;</span><br><span class="line">  p = numbers;  *p = <span class="number">10</span>;</span><br><span class="line">  p++;  *p = <span class="number">20</span>;</span><br><span class="line">  p = &amp;numbers[<span class="number">2</span>];  *p = <span class="number">30</span>;</span><br><span class="line">  p = numbers + <span class="number">3</span>;  *p = <span class="number">40</span>;</span><br><span class="line">  p = numbers;  *(p+<span class="number">4</span>) = <span class="number">50</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> n=<span class="number">0</span>; n&lt;<span class="number">5</span>; n++)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; numbers[n] &lt;&lt; <span class="string">", "</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Return value<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>,</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>指针初始化</p>
+<blockquote>
+<p>指针在被声明时可以直接以内存地址初始化。比如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> myvar;</span><br><span class="line"><span class="keyword">int</span> * myptr = &amp;myvar;	<span class="comment">//结果等于int * myptr;myptr = &amp;myvar;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>指针算术运算</p>
+<blockquote>
+<p>指针支持算数运算（++，–，+1,-1）。</p>
+</blockquote>
+</li>
+<li><p>常量指针</p>
+<blockquote>
+<p>常量指针仅读取所指向地址的value而不作修改。指针本身也可以是常量。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> y=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * p = &amp;y;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x;</span><br><span class="line">      <span class="keyword">int</span> *       p1 = &amp;x;  <span class="comment">// non-const pointer to non-const int</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *       p2 = &amp;x;  <span class="comment">// non-const pointer to const int</span></span><br><span class="line">      <span class="keyword">int</span> * <span class="keyword">const</span> p3 = &amp;x;  <span class="comment">// const pointer to non-const int</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> p4 = &amp;x;  <span class="comment">// const pointer to const int</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串指针</p>
+<blockquote>
+<p>因为字符串是包含空白符字符序列的数组，故而，也可以使用指针访问string或存储string。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> * foo = <span class="string">"hello"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>双层指针</p>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type ** ptr_identifier;</span><br></pre></td></tr></table></figure>
+<p>Example:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a;</span><br><span class="line"><span class="keyword">char</span> * b;</span><br><span class="line"><span class="keyword">char</span> ** c;</span><br><span class="line">a = <span class="string">'z'</span>;</span><br><span class="line">b = &amp;a;</span><br><span class="line">c = &amp;b;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/c++/pointer_to_pointer.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>无类型指针</p>
+<blockquote>
+<p>C++中<code>void</code>表示<code>absence of type</code>,或称无类型。所以<code>void *</code>类型的指针所指value没有类型（未定义长度、未定义解引用属性），<br>因此<code>void *</code>类型指针可以指向任意类型的数据;而void一引入的缺点就是，不可以对<code>void *</code>指针直接使用<code>解引用 *</code>，<br>所以无类型的地址需要在解引用前转化为某种特定类型的指针。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// increaser</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">increase</span> <span class="params">(<span class="keyword">void</span>* data, <span class="keyword">int</span> psize)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> ( psize == <span class="keyword">sizeof</span>(<span class="keyword">char</span>) )</span><br><span class="line">  &#123; <span class="keyword">char</span>* pchar; pchar=(<span class="keyword">char</span>*)data; ++(*pchar); &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (psize == <span class="keyword">sizeof</span>(<span class="keyword">int</span>) )</span><br><span class="line">  &#123; <span class="keyword">int</span>* pint; pint=(<span class="keyword">int</span>*)data; ++(*pint); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> a = <span class="string">'x'</span>;</span><br><span class="line">  <span class="keyword">int</span> b = <span class="number">1602</span>;</span><br><span class="line">  increase (&amp;a,<span class="keyword">sizeof</span>(a));</span><br><span class="line">  increase (&amp;b,<span class="keyword">sizeof</span>(b));</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">", "</span> &lt;&lt; b &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Return value<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y, <span class="number">1603</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>无效指针与空指针</p>
+<blockquote>
+<p>原则上指针可指向任意地址，即使对应的地址未存入任何有效元素。比如未初始化指针与指向数组未定义元素位置的指针：</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * p;               <span class="comment">// uninitialized pointer (local variable)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> myarray[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> * q = myarray+<span class="number">20</span>;  <span class="comment">// element out of bounds</span></span><br></pre></td></tr></table></figure>
+<p><mark><strong>nullptr</strong></mark>:所有指针类型都可以指向的值，且所有空指针等同。C++会将<code>nullptr</code>解释为<strong>an integer value of zero</strong>或者<strong>keyword: nullptr</strong>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * p = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> * q = <span class="literal">nullptr</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>void vs nullprt<blockquote>
+<p>空指针是一个值，任何指针都可以表示它指向“nowhere”，而void指针是一种指针，可以指向某个没有特定类型的地方。一个是指存储在指针中的值，另一个是指它指向的数据类型。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>函数指针</p>
+<blockquote>
+<p>函数指针可以用于将函数作为参数传给另一个函数。<br>函数指针与普通函数声明语义相同。</p>
+</blockquote>
+<ul>
+<li>Syntax<br><code>type (*ptr_identifier)(types of func args) = func;</code></li>
+<li><p>Example</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pointer to functions</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">addition</span> <span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> (a+b); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">subtraction</span> <span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> (a-b); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">operation</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> (*functocall)(<span class="keyword">int</span>,<span class="keyword">int</span>))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> g;</span><br><span class="line">  g = (*functocall)(x,y);</span><br><span class="line">  <span class="keyword">return</span> (g);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> m,n;</span><br><span class="line">  <span class="keyword">int</span> (*minus)(<span class="keyword">int</span>,<span class="keyword">int</span>) = subtraction;</span><br><span class="line"></span><br><span class="line">  m = operation (<span class="number">7</span>, <span class="number">5</span>, addition);</span><br><span class="line">  n = operation (<span class="number">20</span>, m, minus);</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt;n;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Return value<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Dynamic-Memroy"><a href="#Dynamic-Memroy" class="headerlink" title="Dynamic Memroy"></a>Dynamic Memroy</h1><blockquote>
+</blockquote>
+<hr>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="http://www.cplusplus.com/doc/tutorial/arrays/" target="_blank" rel="noopener">C++ Array</a></li>
+<li><a href="https://stackoverflow.com/questions/9511982/virtual-address-space-in-the-context-of-programming" target="_blank" rel="noopener">Virtual address space in the context of programming</a></li>
+<li><a href="https://lwn.net/Articles/91829/" target="_blank" rel="noopener">Reorganizing the address space</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CPP/" rel="tag"><i class="fa fa-tag"></i>
+
+ CPP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/C-11-Program-Structure.html" rel="next" title="C++11 Program Structure">
+                C++11 Program Structure <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/europe-man.jpg" alt="Leopold.Seagal">
+            
+              <p class="site-author-name" itemprop="name">Leopold.Seagal</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Leopold-Sun" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:markyeap@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://dev.tencent.com/u/Leopold-Seagal" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-code"></i>Coding</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://tsnest.cc/forum.php/" title="天使领域" target="_blank" rel="external nofollow">天使领域</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hycdes.com/" title="少女前线" target="_blank" rel="external nofollow">少女前线</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hycdes.github.io/" title="命运の乐章" target="_blank" rel="external nofollow">命运の乐章</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.damien.ink/" title="Damien丶泽宇" target="_blank" rel="external nofollow">Damien丶泽宇</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.runoob.com/" title="菜鸟教程" target="_blank" rel="external nofollow">菜鸟教程</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("12/20/2018 15:13:14");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="Age:"+daysold+" D "+hrsold+" H "+minsold+" M "+seconds+" S ";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Contaier-Array"><span class="nav-number">1.</span> <span class="nav-text">Contaier - Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Character-sequences"><span class="nav-number">2.</span> <span class="nav-text">Character sequences</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pointers"><span class="nav-number">3.</span> <span class="nav-text">Pointers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dynamic-Memroy"><span class="nav-number">4.</span> <span class="nav-text">Dynamic Memroy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leopold.Seagal</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
