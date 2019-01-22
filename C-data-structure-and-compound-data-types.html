@@ -110,7 +110,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://leopold-sun.github.io/images/c++/memaddspace.png">
 <meta property="og:image" content="https://leopold-sun.github.io/images/c++/pointer_to_pointer.png">
-<meta property="og:updated_time" content="2019-01-21T09:23:41.416Z">
+<meta property="og:updated_time" content="2019-01-22T05:49:50.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ data structure &amp; compound data types">
 <meta name="twitter:description" content="Contaier - Array 数组： 一组类型一致的元素存放在连续的内存位置（contigous memory locations），能够通过给特定的标识符添加指针以便引用该内存地址的值。C++规定，数组第一位被标志为“第0位”。   Syntax  Declaration  数组在被使用前需要被声明。  C++: 12#include&amp;lt;array&amp;gt;array &amp;lt;type,e">
@@ -715,7 +715,56 @@
 </ul>
 <hr>
 <h1 id="Dynamic-Memroy"><a href="#Dynamic-Memroy" class="headerlink" title="Dynamic Memroy"></a>Dynamic Memroy</h1><blockquote>
+<p>在不同的程序中，存在这样一个需求：<br>程序的部分内存只有在<code>runtime</code>才能被确定。</p>
 </blockquote>
+<p>C++语言包含两种对内存操作的函数：</p>
+<ol>
+<li>new</li>
+<li>delete</li>
+</ol>
+<h2 id="operators-new-amp-new"><a href="#operators-new-amp-new" class="headerlink" title="operators new &amp; new[]"></a>operators new &amp; new[]</h2><p><code>new</code>用于动态内存分配，语法实现上，其后跟着<code>type</code>;若需要申请内存以存放多个元素，则与要在最后加上<code>[the number of required elements]</code>。</p>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pointer = <span class="keyword">new</span> type;	<span class="comment">//used to allocate memory containing one single element of type "type"</span></span><br><span class="line">pointer = <span class="keyword">new</span> type [number_of_elements];	<span class="comment">//used to allocate a block (an array) of elements of type "type"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Example</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * foo;</span><br><span class="line">foo = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+<p>  上述实例语句动态分配<strong>5</strong>个类型为<strong>int</strong>的元素并返回一个指向该五元素序列头部（第“0”个元素）的<strong>pointer</strong>，该指针指向一个包含五个<strong>int</strong>元素空间的内存块。</p>
+<ul>
+<li>访问动态内存<br><strong>数组访问形式</strong>： foo[0], foo[1], foo[2], …<br><strong>指针访问形式</strong>： *foo, *[foo+1], *[foo+2], …<br><mark>数组声明、动态内存申请的区别</mark>： <blockquote>
+<p>编译时即需要确定数组的长度，即数组在声明时的长度表示必须是<strong>constant expression</strong>;<br>动态内存申请可以使用变量表示所需要申请的内存大小,在<code>runtime</code>时向<code>memory heap</code>动态申请内存空间。因为计算机内存有限，不保证动态申请操作的返回值，C++设置了异常机制，参见<a href="http://www.cplusplus.com/doc/tutorial/dynamic/" target="_blank" rel="noopener">Dynamic memory</a>。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="operators-delete-amp-delete"><a href="#operators-delete-amp-delete" class="headerlink" title="operators delete &amp; delete[]"></a>operators delete &amp; delete[]</h2><blockquote>
+<p>C++使用<code>delete</code>释放被动态申请的内存空间以变回可用状态。</p>
+</blockquote>
+<ul>
+<li>Syntax<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> pointer;		<span class="comment">//释放单个内存元素空间</span></span><br><span class="line"><span class="keyword">delete</span>[] pointer;	<span class="comment">//释放内存块</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>delete操作符有两种形式：<br><strong>pointer</strong>、<strong>null pointer</strong></p>
+</blockquote>
+<ul>
+<li><p>Example:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// rememb-o-matic</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;new&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i,n;</span><br><span class="line">  <span class="keyword">int</span> * p;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"How many numbers would you like to type? "</span>;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; i;</span><br><span class="line">  p= <span class="keyword">new</span> (nothrow) <span class="keyword">int</span>[i];</span><br><span class="line">  <span class="keyword">if</span> (p == <span class="literal">nullptr</span>)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Error: memory could not be allocated"</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">for</span> (n=<span class="number">0</span>; n&lt;i; n++)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Enter number: "</span>;</span><br><span class="line">      <span class="built_in">cin</span> &gt;&gt; p[n];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"You have entered: "</span>;</span><br><span class="line">    <span class="keyword">for</span> (n=<span class="number">0</span>; n&lt;i; n++)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; p[n] &lt;&lt; <span class="string">", "</span>;</span><br><span class="line">    <span class="keyword">delete</span>[] p;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Return value<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">How many numbers would you like to type? <span class="number">5</span></span><br><span class="line">Enter number : <span class="number">75</span></span><br><span class="line">Enter number : <span class="number">436</span></span><br><span class="line">Enter number : <span class="number">1067</span></span><br><span class="line">Enter number : <span class="number">8</span></span><br><span class="line">Enter number : <span class="number">32</span></span><br><span class="line">You have entered: <span class="number">75</span>, <span class="number">436</span>, <span class="number">1067</span>, <span class="number">8</span>, <span class="number">32</span>,</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Data-structure"><a href="#Data-structure" class="headerlink" title="Data structure"></a>Data structure</h1><blockquote>
+<p><strong>数据结构</strong>：一个数据结构使用同一个<code>identifier</code>表示一组<code>data elements</code>,这些数据元素被成为<strong>members</strong>成员，不同成员可以类型不同、长度不等。</p>
+</blockquote>
+<ul>
+<li>Syntax<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">type_name</span> &#123;</span></span><br><span class="line">member_type1 member_name1;</span><br><span class="line">member_type2 member_name2;</span><br><span class="line">member_type3 member_name3;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">&#125; object_names;		<span class="comment">//对象应当包含状态和行为，状态可以理解为成员，行为可以理解为成员函数。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <hr>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
 <li><a href="http://www.cplusplus.com/doc/tutorial/arrays/" target="_blank" rel="noopener">C++ Array</a></li>
@@ -974,7 +1023,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Contaier-Array"><span class="nav-number">1.</span> <span class="nav-text">Contaier - Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Character-sequences"><span class="nav-number">2.</span> <span class="nav-text">Character sequences</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pointers"><span class="nav-number">3.</span> <span class="nav-text">Pointers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dynamic-Memroy"><span class="nav-number">4.</span> <span class="nav-text">Dynamic Memroy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Contaier-Array"><span class="nav-number">1.</span> <span class="nav-text">Contaier - Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Character-sequences"><span class="nav-number">2.</span> <span class="nav-text">Character sequences</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pointers"><span class="nav-number">3.</span> <span class="nav-text">Pointers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dynamic-Memroy"><span class="nav-number">4.</span> <span class="nav-text">Dynamic Memroy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#operators-new-amp-new"><span class="nav-number">4.1.</span> <span class="nav-text">operators new &amp; new[]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#operators-delete-amp-delete"><span class="nav-number">4.2.</span> <span class="nav-text">operators delete &amp; delete[]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-structure"><span class="nav-number">5.</span> <span class="nav-text">Data structure</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
