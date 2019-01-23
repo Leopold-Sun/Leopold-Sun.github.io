@@ -534,8 +534,182 @@ You have entered: 75, 436, 1067, 8, 32,
 -------------------
 # Data structure
 
+## struct
+> **struct**：一个数据结构使用同一个`identifier`表示一组`data elements`,这些数据元素被成为**members**成员，不同成员可以类型不同、长度不等。**struct**支持嵌套。
 
+- Syntax
+```c++
+struct type_name {	//type_name: 该结构体的类型名称
+member_type1 member_name1;
+member_type2 member_name2;
+member_type3 member_name3;
+.
+.
+} object_names;		//object_name: 在该"type_name"类型的结构体的有效标识符子集内。
+```
+> 对象应当包含状态和行为，状态可以理解为成员，行为可以理解为成员函数。
 --------------------
+- Example
+```c++
+// array of structures
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+struct movies_t {
+  string title;
+  int year;
+} films [3];
+
+void printmovie (movies_t movie);
+
+int main ()
+{
+  string mystr;
+  int n;
+
+  for (n=0; n<3; n++)
+  {
+    cout << "Enter title: ";
+    getline (cin,films[n].title);
+    cout << "Enter year: ";
+    getline (cin,mystr);
+    stringstream(mystr) >> films[n].year;
+  }
+
+  cout << "\nYou have entered these movies:\n";
+  for (n=0; n<3; n++)
+    printmovie (films[n]);
+  return 0;
+}
+
+void printmovie (movies_t movie)
+{
+  cout << movie.title;
+  cout << " (" << movie.year << ")\n";
+}
+```
+	- Return value
+	```c++
+Enter title: Blade Runner
+Enter year: 1982
+Enter title: The Matrix
+Enter year: 1999
+Enter title: Taxi Driver
+Enter year: 1976
+ 
+You have entered these movies:
+Blade Runner (1982)
+The Matrix (1999)
+Taxi Driver (1976)
+	```
+
+### 结构指针
+
+> 可使用结构类型名与指针标识符(*)定义指向结构的指针。
+
+- Example
+```c++
+struct movies_t {
+  string title;
+  int year;
+};
+
+movies_t amovie;
+movies_t * pmovie;
+pmovie = &amovie;	//pmovie的value被复制为amovie的address
+```
+
+#### (->)解引用
+
+> 指针使用解引用符号<mark>"->"</mark>访问具有**成员(member)**对象。
+
+```c++
+pmovie->title;
+(*pmovie).title;
+```
+**指针访问对象成员 vs 对象访问自身成员**
+
+|Expression	|What is evaluated	|Equivalent|
+|-|-|-|
+|a.b	|Member b of object a	| 	|
+|a->b	|Member b of object pointed to by a	|(*a).b|
+|*a.b	|Value pointed to by member b of object a|	*(a.b)|
+|(*a).b| memebr of object pointed to by a | a->b|
+
+## union
+> 参见 [struct & union](https://leopold-sun.com/struct-unio.html)
+unions允许内存块以不同的数据类型被访问到。
+
+- Syntax
+```c++
+union type_name {
+  member_type1 member_name1;
+  member_type2 member_name2;
+  member_type3 member_name3;
+  .
+  .
+} object_names;
+```
+所有类型数据占用相同大小的内存空间，所占用的内存空间大小为所用类型中字节最多的类型所占用的空间大小。
+
+## enum
+> 参见 [enum](https://leopold-sun.com/enum.html)
+
+- Syntax
+```c++
+enum type_name {
+  value1,
+  value2,
+  value3,
+  .
+  .
+} object_names;
+```
+
+## Type aliases
+> typedef / using
+C++允许使用`typede`和`using`为赋予类型`aliases`。
+
+### typedef
+> 为一般类型名赋予别名，继承自C语言。
+
+- Syntax
+```c++
+typedef existing_type new_type_name ;
+```
+
+	- Example
+	```c++
+typedef char C;
+typedef unsigned int WORD;
+typedef char * pChar;
+typedef char field [50]; 
+
+C mychar, anotherchar, *ptc1;
+WORD myword;
+pChar ptc2;
+field name; 
+	```
+### using
+> c++语言引入的赋予类型别名的方式,比`typedef`的应用范围更广，主要是在`templates`的语法中。
+
+- Syntax
+```c++
+using new_type_name = existing_type ;
+```
+
+	- Example
+	```c++
+using C = char;
+using WORD = unsigned int;
+using pChar = char *;
+using field = char [50];
+	```
+
+
+------------------------------------
 
 # Reference
 
