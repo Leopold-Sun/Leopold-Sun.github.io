@@ -110,7 +110,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://leopold-sun.github.io/images/c++/memaddspace.png">
 <meta property="og:image" content="https://leopold-sun.github.io/images/c++/pointer_to_pointer.png">
-<meta property="og:updated_time" content="2019-01-22T05:49:50.049Z">
+<meta property="og:updated_time" content="2019-01-23T04:02:01.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ data structure &amp; compound data types">
 <meta name="twitter:description" content="Contaier - Array 数组： 一组类型一致的元素存放在连续的内存位置（contigous memory locations），能够通过给特定的标识符添加指针以便引用该内存地址的值。C++规定，数组第一位被标志为“第0位”。   Syntax  Declaration  数组在被使用前需要被声明。  C++: 12#include&amp;lt;array&amp;gt;array &amp;lt;type,e">
@@ -758,11 +758,109 @@
 </li>
 </ul>
 <hr>
-<h1 id="Data-structure"><a href="#Data-structure" class="headerlink" title="Data structure"></a>Data structure</h1><blockquote>
-<p><strong>数据结构</strong>：一个数据结构使用同一个<code>identifier</code>表示一组<code>data elements</code>,这些数据元素被成为<strong>members</strong>成员，不同成员可以类型不同、长度不等。</p>
+<h1 id="Data-structure"><a href="#Data-structure" class="headerlink" title="Data structure"></a>Data structure</h1><h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2><blockquote>
+<p><strong>struct</strong>：一个数据结构使用同一个<code>identifier</code>表示一组<code>data elements</code>,这些数据元素被成为<strong>members</strong>成员，不同成员可以类型不同、长度不等。<strong>struct</strong>支持嵌套。</p>
 </blockquote>
 <ul>
-<li>Syntax<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">type_name</span> &#123;</span></span><br><span class="line">member_type1 member_name1;</span><br><span class="line">member_type2 member_name2;</span><br><span class="line">member_type3 member_name3;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">&#125; object_names;		<span class="comment">//对象应当包含状态和行为，状态可以理解为成员，行为可以理解为成员函数。</span></span><br></pre></td></tr></table></figure>
+<li>Syntax<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">type_name</span> &#123;</span>	<span class="comment">//type_name: 该结构体的类型名称</span></span><br><span class="line">member_type1 member_name1;</span><br><span class="line">member_type2 member_name2;</span><br><span class="line">member_type3 member_name3;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">&#125; object_names;		<span class="comment">//object_name: 在该"type_name"类型的结构体的有效标识符子集内。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>对象应当包含状态和行为，状态可以理解为成员，行为可以理解为成员函数。</p>
+</blockquote>
+<hr>
+<ul>
+<li><p>Example</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// array of structures</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">movies_t</span> &#123;</span></span><br><span class="line">  <span class="built_in">string</span> title;</span><br><span class="line">  <span class="keyword">int</span> year;</span><br><span class="line">&#125; films [<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printmovie</span> <span class="params">(<span class="keyword">movies_t</span> movie)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">string</span> mystr;</span><br><span class="line">  <span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (n=<span class="number">0</span>; n&lt;<span class="number">3</span>; n++)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Enter title: "</span>;</span><br><span class="line">    getline (<span class="built_in">cin</span>,films[n].title);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Enter year: "</span>;</span><br><span class="line">    getline (<span class="built_in">cin</span>,mystr);</span><br><span class="line">    <span class="built_in">stringstream</span>(mystr) &gt;&gt; films[n].year;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"\nYou have entered these movies:\n"</span>;</span><br><span class="line">  <span class="keyword">for</span> (n=<span class="number">0</span>; n&lt;<span class="number">3</span>; n++)</span><br><span class="line">    printmovie (films[n]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printmovie</span> <span class="params">(<span class="keyword">movies_t</span> movie)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; movie.title;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">" ("</span> &lt;&lt; movie.year &lt;&lt; <span class="string">")\n"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Return value<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Enter title: Blade Runner</span><br><span class="line">Enter year: <span class="number">1982</span></span><br><span class="line">Enter title: The Matrix</span><br><span class="line">Enter year: <span class="number">1999</span></span><br><span class="line">Enter title: Taxi Driver</span><br><span class="line">Enter year: <span class="number">1976</span></span><br><span class="line"> </span><br><span class="line">You have entered these movies:</span><br><span class="line"><span class="function">Blade <span class="title">Runner</span> <span class="params">(<span class="number">1982</span>)</span></span></span><br><span class="line"><span class="function">The <span class="title">Matrix</span> <span class="params">(<span class="number">1999</span>)</span></span></span><br><span class="line"><span class="function">Taxi <span class="title">Driver</span> <span class="params">(<span class="number">1976</span>)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="结构指针"><a href="#结构指针" class="headerlink" title="结构指针"></a>结构指针</h3><blockquote>
+<p>可使用结构类型名与指针标识符(*)定义指向结构的指针。</p>
+</blockquote>
+<ul>
+<li>Example<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">movies_t</span> &#123;</span></span><br><span class="line">  <span class="built_in">string</span> title;</span><br><span class="line">  <span class="keyword">int</span> year;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">movies_t</span> amovie;</span><br><span class="line"><span class="keyword">movies_t</span> * pmovie;</span><br><span class="line">pmovie = &amp;amovie;	<span class="comment">//pmovie的value被复制为amovie的address</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="gt-解引用"><a href="#gt-解引用" class="headerlink" title="(-&gt;)解引用"></a>(-&gt;)解引用</h4><blockquote>
+<p>指针使用解引用符号<mark>“-&gt;”</mark>访问具有<strong>成员(member)</strong>对象。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pmovie-&gt;title;</span><br><span class="line">(*pmovie).title;</span><br></pre></td></tr></table></figure>
+<p><strong>指针访问对象成员 vs 对象访问自身成员</strong></p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>What is evaluated</th>
+<th>Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a.b</td>
+<td>Member b of object a</td>
+<td></td>
+</tr>
+<tr>
+<td>a-&gt;b</td>
+<td>Member b of object pointed to by a</td>
+<td>(*a).b</td>
+</tr>
+<tr>
+<td>*a.b</td>
+<td>Value pointed to by member b of object a</td>
+<td>*(a.b)</td>
+</tr>
+<tr>
+<td>(*a).b</td>
+<td>memebr of object pointed to by a</td>
+<td>a-&gt;b</td>
+</tr>
+</tbody>
+</table>
+<h2 id="union"><a href="#union" class="headerlink" title="union"></a>union</h2><blockquote>
+<p>参见 <a href="https://leopold-sun.com/struct-unio.html" target="_blank" rel="noopener">struct &amp; union</a><br>unions允许内存块以不同的数据类型被访问到。</p>
+</blockquote>
+<ul>
+<li>Syntax<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> type_name &#123;</span><br><span class="line">  member_type1 member_name1;</span><br><span class="line">  member_type2 member_name2;</span><br><span class="line">  member_type3 member_name3;</span><br><span class="line">  .</span><br><span class="line">  .</span><br><span class="line">&#125; object_names;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>所有类型数据占用相同大小的内存空间，所占用的内存空间大小为所用类型中字节最多的类型所占用的空间大小。</p>
+<h2 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h2><blockquote>
+<p>参见 <a href="https://leopold-sun.com/enum.html" target="_blank" rel="noopener">enum</a></p>
+</blockquote>
+<ul>
+<li>Syntax<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> type_name &#123;</span><br><span class="line">  value1,</span><br><span class="line">  value2,</span><br><span class="line">  value3,</span><br><span class="line">  .</span><br><span class="line">  .</span><br><span class="line">&#125; object_names;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Type-aliases"><a href="#Type-aliases" class="headerlink" title="Type aliases"></a>Type aliases</h2><blockquote>
+<p>typedef / using<br>C++允许使用<code>typede</code>和<code>using</code>为赋予类型<code>aliases</code>。</p>
+</blockquote>
+<h3 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h3><blockquote>
+<p>为一般类型名赋予别名，继承自C语言。</p>
+</blockquote>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> existing_type new_type_name ;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Example<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> C;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> WORD;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> * pChar;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> field [<span class="number">50</span>]; </span><br><span class="line"></span><br><span class="line">C mychar, anotherchar, *ptc1;</span><br><span class="line">WORD myword;</span><br><span class="line">pChar ptc2;</span><br><span class="line">field name;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="using"><a href="#using" class="headerlink" title="using"></a>using</h3><blockquote>
+<p>c++语言引入的赋予类型别名的方式,比<code>typedef</code>的应用范围更广，主要是在<code>templates</code>的语法中。</p>
+</blockquote>
+<ul>
+<li><p>Syntax</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> new_type_name = existing_type ;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Example<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> C = <span class="keyword">char</span>;</span><br><span class="line"><span class="keyword">using</span> WORD = <span class="keyword">unsigned</span> <span class="keyword">int</span>;</span><br><span class="line"><span class="keyword">using</span> pChar = <span class="keyword">char</span> *;</span><br><span class="line"><span class="keyword">using</span> field = <span class="keyword">char</span> [<span class="number">50</span>];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 </li>
 </ul>
 <hr>
@@ -1023,7 +1121,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Contaier-Array"><span class="nav-number">1.</span> <span class="nav-text">Contaier - Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Character-sequences"><span class="nav-number">2.</span> <span class="nav-text">Character sequences</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pointers"><span class="nav-number">3.</span> <span class="nav-text">Pointers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dynamic-Memroy"><span class="nav-number">4.</span> <span class="nav-text">Dynamic Memroy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#operators-new-amp-new"><span class="nav-number">4.1.</span> <span class="nav-text">operators new &amp; new[]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#operators-delete-amp-delete"><span class="nav-number">4.2.</span> <span class="nav-text">operators delete &amp; delete[]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-structure"><span class="nav-number">5.</span> <span class="nav-text">Data structure</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Contaier-Array"><span class="nav-number">1.</span> <span class="nav-text">Contaier - Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Character-sequences"><span class="nav-number">2.</span> <span class="nav-text">Character sequences</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pointers"><span class="nav-number">3.</span> <span class="nav-text">Pointers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dynamic-Memroy"><span class="nav-number">4.</span> <span class="nav-text">Dynamic Memroy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#operators-new-amp-new"><span class="nav-number">4.1.</span> <span class="nav-text">operators new &amp; new[]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#operators-delete-amp-delete"><span class="nav-number">4.2.</span> <span class="nav-text">operators delete &amp; delete[]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-structure"><span class="nav-number">5.</span> <span class="nav-text">Data structure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#struct"><span class="nav-number">5.1.</span> <span class="nav-text">struct</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构指针"><span class="nav-number">5.1.1.</span> <span class="nav-text">结构指针</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gt-解引用"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">(-&gt;)解引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#union"><span class="nav-number">5.2.</span> <span class="nav-text">union</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enum"><span class="nav-number">5.3.</span> <span class="nav-text">enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Type-aliases"><span class="nav-number">5.4.</span> <span class="nav-text">Type aliases</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typedef"><span class="nav-number">5.4.1.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#using"><span class="nav-number">5.4.2.</span> <span class="nav-text">using</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
