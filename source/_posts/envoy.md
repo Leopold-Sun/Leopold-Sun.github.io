@@ -53,18 +53,18 @@ The L3/L4 filters are the core of Envoy connection handling, which is comprised 
 
 ## Teminology
 
-`Host`: logical network application capable of network communication
-`Downstream`: A downstream host connects to Envoy, sends requests, and receives responses.
-`Upstream`: An upstream host receives connections and requests from Envoy and returns responses.
-`Listener`: A named network location(e.g., port,unix domain socket, etc) that can be connected to by downstream clients.Envoy exposes one or more listeners that downstream hosts connect to.是Envoy监听的一个地址。
-`Cluster`: A group of logically similar upstream hosts that Envoy connects to.Envoy通过[service discovery](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/service_discovery#arch-overview-service-discovery)发现集群成员;通过[active health checking](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/health_checking#arch-overview-health-checking)决定集群成员的健康状态;Envoy通过[load balancing policy](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/load_balancing/overview#arch-overview-load-balancing)据定将request route给那一个集群成员。
-`Mesh`:  A group of hosts that coordinate to provide a consistent network topology.`Envoy Mesh`表示一组Envoy代理，这组代理为一个分布式系统（包含不同服务与应用）形成一个`messgae passing substrate`信息传输层。
-`Runtime configuration`: Out of band realtime configuration system deployed alongside Envoy.修改envoy配置且不需要重启envoy或修改前（primary）配置以使之生效。
+`Host`: 有能力进行网络通信的逻辑网络应用。
+`Downstream`: 下游主机建立与Envoy之间的连接并发送请求、接收响应。
+`Upstream`: 上游主机接收Envoy发来的连接与请求并作出对请求的响应。
+`Listener`: 是Envoy监听的一个地址,供下游主机连接的“已命名”的网络位置（类似与端口、Unix domain socket）,Envoy会暴露一个或多个监听器以供下游主机连接。
+`Cluster`: Envoy所连接的一组逻辑功能类似的上游主机.Envoy通过[service discovery](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/service_discovery#arch-overview-service-discovery)发现集群成员;通过[active health checking](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/health_checking#arch-overview-health-checking)决定集群成员的健康状态;Envoy通过[load balancing policy](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/load_balancing/overview#arch-overview-load-balancing)据定将request route给那一个集群成员。
+`Mesh`:  一群互相协作的主机共同组成的网络拓扑关系。`Envoy Mesh`表示一组Envoy代理，这组代理为一个分布式系统（包含不同服务与应用）形成一个`messgae passing substrate`信息传输层。
+`Runtime configuration`: Envoy的配置子系统.修改envoy配置且不需要重启envoy或修改前（primary）配置以使之生效。
 `Http Route Table`: HTTP 的路由规则，例如请求的域名，Path符合什么规则，转发给哪个 Cluster。
 
 ## Threading Model —— SPMT Model
 
-> Envoy uses <mark>a single process with multiple threads architecture</mark>. A single master thread controls various sporadic coordination tasks while some number of worker threads perform listening, filtering, and forwarding. Once a connection is accepted by a listener, the connection spends the rest of its lifetime bound to a single worker thread. This allows the majority of Envoy to be largely single threaded (embarrassingly parallel) with a small amount of more complex code handling coordination between the worker threads. Generally Envoy is written to be 100% non-blocking and for most workloads we recommend configuring the number of worker threads to be equal to the number of hardware threads on the machine.——[Envoy Threading Model](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/threading_model)
+> Envoy 采用 <mark>单进程多线程架构</mark>.。主线程负责控制稀疏的协作任务，同时其他的一些线程负责**监听**、**过滤**和**转发**的任务。 每个监听器（也是一个worker thread）负责对应监听到的整个连接的生命周期。这也就导致了大多数Envoy都是单线程的，且带有少量负责与其他工作线程通讯的复杂代码。Envoy是[非阻塞式的](https://www.zhihu.com/question/19732473)。——[Envoy Threading Model](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/threading_model)
 
 ## Listeners
 
